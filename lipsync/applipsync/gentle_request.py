@@ -8,24 +8,32 @@ import json
 url = "http://localhost:49153/transcriptions?async=false"
 
 
-def gentle_json(audio_file, script_file,basepath):
+def gentle_json(data):
+    # data = {
+    #         'audio': audio,
+    #         'script': script,
+    #         'base': basepath,
+    #         'file_id':serializer.data.get('id')
+    #     }
     url = "http://localhost:49153/transcriptions?async=false"
 
     # basepath = settings.BASE_DIR
-    print("basepath  ",basepath)
-    print(script_file, '  ',audio_file)
+    basepath = data.get('base')
+    script_file = data.get('script')
+    audio_file = data.get('audio')
+    print("basepath  ", basepath)
+    print(script_file, '  ', audio_file)
     print("sending... requests")
     # print("BASE_DIR ",str(path))
-    path = str(basepath).replace("\\",'/')
-    audio_path =  path + '/media/audio/'+audio_file.split('/')[-1]
-    transcript_path = path  +  '/media/script/'+script_file.split('/')[-1]
+    path = str(basepath).replace("\\", '/')
+    audio_path = path + '/media/audio/'+audio_file.split('/')[-1]
+    transcript_path = path + '/media/script/'+script_file.split('/')[-1]
 
     print(audio_path)
     print(transcript_path)
 
     # audio_path = audio_file
     # transcript_path = script_file
-
 
     audio_name = audio_path.split('/')[-1]
     transcript_name = transcript_path.split('/')[-1]
@@ -41,14 +49,16 @@ def gentle_json(audio_file, script_file,basepath):
     # ]
     headers = {}
 
-
     print("time extraction from gentle...!")
     response = requests.request(
         "POST", url, headers=headers, data=payload, files=files)
 
     gentle_data = response.text
 
-    json_saving_path = path + "/media/json/" 
+    json_saving_path = path + "/media/json/"
     with open(json_saving_path + "{}.json".format(audio_name), "w") as outfile:
         outfile.write(gentle_data)
-    return gentle_data
+    return {
+        'gentle_data': gentle_data,
+        "file_id": data.get('file_id')
+    }

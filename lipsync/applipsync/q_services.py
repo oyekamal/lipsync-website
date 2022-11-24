@@ -1,10 +1,10 @@
 import time
-
+from .models import GentleJson
 
 
 def hook_funcs(task):
-
-    print("The task result is: ", task.result)
+    # GentleJson.objects.create()
+    print("The result is done for : ", task.result.get('file_id'))
 
 
 def sleepy_func(junk,sleep):

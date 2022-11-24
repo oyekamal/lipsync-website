@@ -26,8 +26,14 @@ class FileViewSet(viewsets.ModelViewSet):
         print("serializer.data ",serializer.data)
         audio =serializer.data.get('audio')
         script =serializer.data.get('script')
+        data = {
+            'audio': audio,
+            'script': script,
+            'base': basepath,
+            'file_id':serializer.data.get('id')
+        }
         # json = gentle_json(request.data.get('audio'), request.data.get('script'))
-        async_task(gentle_json, audio, script,basepath, hook=hook_funcs)
+        async_task(gentle_json,data, hook=hook_funcs)
 
         # print(json)
         headers = self.get_success_headers(serializer.data)

@@ -11,3 +11,11 @@ class File(models.Model):
 
     def __str__(self):
         return self.remark
+
+class GentleJson(models.Model):
+    file = models.ForeignKey(File, on_delete=models.CASCADE,null=True)
+    # the_json = jsonfield.JSONField()    
+    created_at = models.DateTimeField(auto_now_add=True)
+    
+    # def __str__(self):
+    #     return self.json.name
