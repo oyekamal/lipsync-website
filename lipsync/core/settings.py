@@ -122,13 +122,13 @@ USE_TZ = True
 # settings.py example
 Q_CLUSTER = {
     'name': 'myproject',
-    'workers': 6,
-    # 'recycle': 500,
-    # 'timeout': 60,
-    # 'compress': True,
-    # 'save_limit': 250,
-    # 'queue_limit': 500,
-    # 'cpu_affinity': 1,
+    'workers': 2,
+    'recycle': 500,
+    'timeout': 60,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
     'label': 'Django Q',
     'redis': {
         'host': 'localhost',
