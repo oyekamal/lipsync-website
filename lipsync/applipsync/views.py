@@ -7,6 +7,10 @@ from.serializers import *
 from .gentle_request import gentle_json
 from django_q.tasks import async_task
 from .q_services import sleepy_func, hook_funcs
+from django.conf import settings
+basepath = settings.BASE_DIR
+
+
 # async_task('time.sleep', 22)
 class FileViewSet(viewsets.ModelViewSet):
     queryset = File.objects.all()
@@ -23,7 +27,7 @@ class FileViewSet(viewsets.ModelViewSet):
         audio =serializer.data.get('audio')
         script =serializer.data.get('script')
         # json = gentle_json(request.data.get('audio'), request.data.get('script'))
-        async_task(gentle_json, audio, script, hook=hook_funcs)
+        async_task(gentle_json, audio, script,basepath, hook=hook_funcs)
 
         # print(json)
         headers = self.get_success_headers(serializer.data)

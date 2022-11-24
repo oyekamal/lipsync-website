@@ -1,23 +1,24 @@
 import requests
 import json
-from django.conf import settings
-path = settings.BASE_DIR
+# from django.conf import settings
+# basepath = settings.BASE_DIR
 
 # from utils import add_gentle_phonemes, framer_reader, frame_creater, add_normal_phonemes
 # from frametoVideo import  convert_frames_to_video_function
 url = "http://localhost:49153/transcriptions?async=false"
 
 
-def gentle_json(audio_file, script_file):
+def gentle_json(audio_file, script_file,basepath):
     url = "http://localhost:49153/transcriptions?async=false"
 
-    path = settings.BASE_DIR
-
+    # basepath = settings.BASE_DIR
+    print("basepath  ",basepath)
     print(script_file, '  ',audio_file)
     print("sending... requests")
     # print("BASE_DIR ",str(path))
-    audio_path =  str(path).replace("\\",'/') + '/media/audio/'+audio_file.split('/')[-1]
-    transcript_path =str(path).replace("\\",'/')  +  '/media/script/'+script_file.split('/')[-1]
+    path = str(basepath).replace("\\",'/')
+    audio_path =  path + '/media/audio/'+audio_file.split('/')[-1]
+    transcript_path = path  +  '/media/script/'+script_file.split('/')[-1]
 
     print(audio_path)
     print(transcript_path)
@@ -47,7 +48,7 @@ def gentle_json(audio_file, script_file):
 
     gentle_data = response.text
 
-    path = "C:/Users/cacf/Documents/website_work/lipsync/media/json"
-    with open(path + "/sample_text.json", "w") as outfile:
+    json_saving_path = path + "/media/json/" 
+    with open(json_saving_path + "{}.json".format(audio_name), "w") as outfile:
         outfile.write(gentle_data)
     return gentle_data

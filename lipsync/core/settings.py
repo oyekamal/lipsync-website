@@ -122,7 +122,7 @@ USE_TZ = True
 # settings.py example
 Q_CLUSTER = {
     'name': 'myproject',
-    'workers': 2,
+    'workers': 1,
     'recycle': 500,
     'timeout': 60,
     'compress': True,
