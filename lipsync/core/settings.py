@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     #packages
     'rest_framework',
+    'django_q',
 
     #app
     'applipsync',
@@ -117,6 +118,23 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# settings.py example
+Q_CLUSTER = {
+    'name': 'myproject',
+    'workers': 6,
+    # 'recycle': 500,
+    # 'timeout': 60,
+    # 'compress': True,
+    # 'save_limit': 250,
+    # 'queue_limit': 500,
+    # 'cpu_affinity': 1,
+    'label': 'Django Q',
+    'redis': {
+        'host': 'localhost',
+        'port': 6379,
+        'db': 0, }
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
