@@ -4,7 +4,7 @@ from .models import GentleJson, File
 
 def hook_funcs(task):
     print("yes save the json")
-    
+    print("type --------------------", type(task.result.get('gentle_data')))
     file = File.objects.get(id=task.result.get('file_id'))
     GentleJson.objects.create(file=file, json=task.result.get('gentle_data'))
 

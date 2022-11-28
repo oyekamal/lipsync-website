@@ -59,6 +59,6 @@ def gentle_json(data):
     with open(json_saving_path + "{}.json".format(audio_name), "w") as outfile:
         outfile.write(gentle_data)
     return {
-        'gentle_data': gentle_data,
+        'gentle_data': json.loads(gentle_data),
         "file_id": data.get('file_id')
     }
