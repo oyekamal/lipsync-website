@@ -5,8 +5,8 @@ import json
 # from frametoVideo import  convert_frames_to_video_function
 url = "http://localhost:49153/transcriptions?async=false"
 
-audio_path = 'C:/Users/cacf/Documents/website_work/lipsync/media/audio/software4_26m5q5S.wav'
-transcript_path = 'C:/Users/cacf/Documents/website_work/lipsync/media/script/software4_Bp9G8Ad.txt'
+audio_path = 'C:/Users/cacf/Documents/website_work/lipsync/media/audio/software4_2B8O2Qi.wav'
+transcript_path = 'C:/Users/cacf/Documents/website_work/lipsync/media/script/software4_5slTaCa.txt'
 
 
 audio_name = audio_path.split('/')[-1]

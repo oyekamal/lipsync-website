@@ -1,12 +1,16 @@
 import time
 from .models import GentleJson, File
+from .utils import add_normal_phonemes, framer_reader
+from django_q.tasks import async_task
 
 
 def hook_funcs(task):
     print("yes save the json")
     print("type --------------------", type(task.result.get('gentle_data')))
     file = File.objects.get(id=task.result.get('file_id'))
-    GentleJson.objects.create(file=file, json=task.result.get('gentle_data'))
+    json = add_normal_phonemes(task.result.get('gentle_data'))
+
+    GentleJson.objects.create(file=file, json=json)
 
     print("The result is done for : ", task.result.get('file_id'))
 
