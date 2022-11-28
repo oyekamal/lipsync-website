@@ -1,4 +1,5 @@
 from django.db import models
+from jsonfield import JSONField
 
 # Create your models here.
 
@@ -14,7 +15,8 @@ class File(models.Model):
 
 class GentleJson(models.Model):
     file = models.ForeignKey(File, on_delete=models.CASCADE,null=True)
-    # the_json = jsonfield.JSONField()    
+    # the_json = jsonfield.JSONField()   
+    json = JSONField(null=True) 
     created_at = models.DateTimeField(auto_now_add=True)
     
     # def __str__(self):

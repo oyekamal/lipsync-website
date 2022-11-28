@@ -1,9 +1,13 @@
 import time
-from .models import GentleJson
+from .models import GentleJson, File
 
 
 def hook_funcs(task):
-    # GentleJson.objects.create()
+    print("yes save the json")
+    
+    file = File.objects.get(id=task.result.get('file_id'))
+    GentleJson.objects.create(file=file, json=task.result.get('gentle_data'))
+
     print("The result is done for : ", task.result.get('file_id'))
 
 
