@@ -6,6 +6,8 @@ from PIL import Image
 from g2p_en import G2p
 from common.constants import NORMAL_PHONEMES
 g2p = G2p()
+from django.conf import settings
+basepath = settings.BASE_DIR
 
 def returnSum(dict):
     return sum(dict.values())
@@ -112,8 +114,11 @@ def edit_image_list(image_list):
     return image_list
 
 
-def framer_reader(gentle_data):
-    # frame_counter = 0
+def framer_reader(gentle_data, folder_name='happy'):
+    #C:\Users\cacf\Documents\website_work\lipsync
+    path = str(basepath).replace("\\", '/')
+
+    frame_counter = 0
     # if gentle_data['MODE'] == 'gentle':
     #     f = open('./json/gentle_phonemes.json')
     # else:
@@ -139,10 +144,10 @@ def framer_reader(gentle_data):
                             image_name = phonem_dic['happy']
                             print(image_name)
                             images_list.append(
-                                './images/bear/{}'.format(image_name))
+                                path + "/media/images/{0}/{1}".format(folder_name,image_name))
                             frame_counter += 1
 
-        mouth_path = f"./images/bear/m_b_close_h.png"
+        mouth_path = path +"/media/images/{0}/m_b_close_h.png".format(folder_name)
         images_list.append(mouth_path)
 
         print(mouth_path)

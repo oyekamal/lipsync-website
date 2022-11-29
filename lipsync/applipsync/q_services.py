@@ -1,5 +1,5 @@
 import time
-from .models import GentleJson, File
+from .models import GentleJson, File, VideoFrame
 from .utils import add_normal_phonemes, framer_reader
 from django_q.tasks import async_task
 
@@ -10,7 +10,10 @@ def hook_funcs(task):
     file = File.objects.get(id=task.result.get('file_id'))
     json = add_normal_phonemes(task.result.get('gentle_data'))
 
-    GentleJson.objects.create(file=file, json=json)
+    gentle_json = GentleJson.objects.create(file=file, json=json)
+    frame_list = framer_reader(gentle_json.json)
+
+    VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list)
 
     print("The result is done for : ", task.result.get('file_id'))
 
