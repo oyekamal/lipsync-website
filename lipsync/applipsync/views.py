@@ -8,7 +8,7 @@ from .gentle_request import gentle_json
 from django_q.tasks import async_task
 from .q_services import sleepy_func, hook_funcs
 from django.conf import settings
-from .utils import framer_reader
+from .utils import framer_reader, frame_creater
 basepath = settings.BASE_DIR
 
 
@@ -58,7 +58,9 @@ class VideoFrameViewSet(viewsets.ModelViewSet):
             frame_list = framer_reader(gentle_json.json)
             print("frame_list: ", frame_list)
             # request.data['video_frame'] = frame_list
-            VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list)
+            video_frame_keys = frame_creater(frame_list)
+            # print(video_frame_keys)
+            VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list, video_frame_keys=video_frame_keys)
         except Exception as e:
             print("found error")
             print(e)

@@ -26,6 +26,7 @@ class VideoFrame(models.Model):
     gentle_josn = models.ForeignKey(GentleJson, on_delete=models.CASCADE, null=True)
     video_frame = JSONField(null=True) 
     created_at = models.DateTimeField(auto_now_add=True)
+    video_frame_keys = JSONField(null=True) 
 
     def __str__(self):
         return self.gentle_josn.file.remark

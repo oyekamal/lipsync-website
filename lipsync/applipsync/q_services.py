@@ -12,7 +12,6 @@ def hook_funcs(task):
 
     gentle_json = GentleJson.objects.create(file=file, json=json)
     frame_list = framer_reader(gentle_json.json)
-
     VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list)
 
     print("The result is done for : ", task.result.get('file_id'))

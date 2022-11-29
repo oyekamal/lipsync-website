@@ -159,14 +159,14 @@ def framer_reader(gentle_data, folder_name='happy'):
 
 
 def frame_creater(image_list):
-
-    bg_path = r"./images/background/greenbg.png"
+    path = str(basepath).replace("\\", '/')
+    bg_path = path + "/media/images/background/greenbg.png"
     bg = Image.open(bg_path)
 
     bg_name = bg_path.split('/')[-1].split('.')[0]
 
     frame_data = {"key_counter": {}, "frame_key": {}}
-    mypath = './frames'
+    mypath =  path + '/media/frames'
     files = [f for f in os.listdir(mypath)]
     for each_file in files:
         key_name = each_file.split('.')[0]
@@ -184,13 +184,13 @@ def frame_creater(image_list):
             bg = Image.open(bg_path)
             image = adding_image(bg, lip, location=(200, 250))
             print(counter)
-            image.save(f'./frames/{key}.png')
+            image.save(path + '/media/frames/{0}.png'.format(key))
         else:
             frame_data['key_counter'][key] = frame_data['key_counter'][key] + 1
         frame_data['frame_key'][counter] = key
         
 
-    with open('./json/frameCreationInfo/frameCreationInfo.json', "w") as outfile:
+    with open(path + '/common/frameCreationInfo/frameCreationInfo.json', "w") as outfile:
         json.dump(frame_data, outfile)
 
     return frame_data

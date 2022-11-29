@@ -1,0 +1,21 @@
+hi guys. I'm kamal and I love automation. 
+
+Have you ever thought of making your own animation show? well, I did.
+
+but I don't know the first thing about animation.
+
+So I start to learn how to draw and learn about animation. It was hard at first, but I got the hang of it after a while, but it took a lot of time. creating one minute of mouth movement takes me around one hour work. it was fun at the beginning but I got bored doing it. Because it was a repeating process and I hate repeating processes. so I started looking for a way to automate the process. 
+
+so I start watching other not-so-cool animation videos on a different channel.  I realize some of the processes are repeating. for example mouth movement, eyes, and emotion. I thought I can automate this process. with the help of carykh ideas and its channel. the dream become reality. 
+
+
+I made this software. in it you don't have to worry about any animation drawing, all you have to do is provide the information in a CSV file and the software will do its magic. the video you are watching right now is made by my software.
+
+
+the best part about this software it is by changing one to two  in the CSV file I can switch between different characters. like this. like this this. huh. cool right? you can use your custom character too.  which I will explain in a different video AND the working of this software.
+
+if you like the idea. I can make this software publicly available for you guys through a website. 
+
+. please do share your thoughts and subscribe to my channel ok
+
+I WILL SEE YOU IN THE NEXT VIDEO. TAKE CARE bye
