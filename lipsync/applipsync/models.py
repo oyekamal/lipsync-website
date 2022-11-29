@@ -19,5 +19,13 @@ class GentleJson(models.Model):
     json = JSONField(null=True) 
     created_at = models.DateTimeField(auto_now_add=True)
     
-    # def __str__(self):
-    #     return self.json.name
+    def __str__(self):
+        return self.file.remark
+
+class VideoFrame(models.Model):
+    gentle_josn = models.ForeignKey(GentleJson, on_delete=models.CASCADE, null=True)
+    video_frame = JSONField(null=True) 
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.gentle_josn.file.remark

@@ -4,7 +4,7 @@ import os
 from .imageutils import adding_image
 from PIL import Image
 from g2p_en import G2p
-
+from common.constants import NORMAL_PHONEMES
 g2p = G2p()
 
 def returnSum(dict):
@@ -113,13 +113,14 @@ def edit_image_list(image_list):
 
 
 def framer_reader(gentle_data):
-    frame_counter = 0
-    if gentle_data['MODE'] == 'gentle':
-        f = open('./json/gentle_phonemes.json')
-    else:
-        f = open('./json/phonemes_json.json')
+    # frame_counter = 0
+    # if gentle_data['MODE'] == 'gentle':
+    #     f = open('./json/gentle_phonemes.json')
+    # else:
+    #     f = open('./json/phonemes_json.json')
 
-    phonemes = json.load(f)
+    # phonemes = json.load(f)
+    phonemes = NORMAL_PHONEMES
     images_list = []
     # print(phonemes)
     while frame_counter <= gentle_data['TOTAL_VIDEO_FRAMES']:
