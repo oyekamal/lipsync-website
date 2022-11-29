@@ -60,5 +60,7 @@ def gentle_json(data):
         outfile.write(gentle_data)
     return {
         'gentle_data': json.loads(gentle_data),
-        "file_id": data.get('file_id')
+        "file_id": data.get('file_id'),
+        'base': basepath,
+
     }

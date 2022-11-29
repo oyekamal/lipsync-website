@@ -6,10 +6,13 @@ from.models import *
 from.serializers import *
 from .gentle_request import gentle_json
 from django_q.tasks import async_task
-from .q_services import sleepy_func, hook_funcs
+from .q_services import sleepy_func, hook_funcs, hook_video
 from django.conf import settings
 from .utils import framer_reader, frame_creater
+from .frametoVideo import  convert_frames_to_video_function
+
 basepath = settings.BASE_DIR
+basepath = str(basepath).replace("\\", '/')
 
 
 # async_task('time.sleep', 22)
@@ -51,7 +54,7 @@ class VideoFrameViewSet(viewsets.ModelViewSet):
         serializer.is_valid(raise_exception=True)
 
         print("serializer.data ",request.data)
-        print("basepath --" ,basepath)
+        # print("basepath --" ,basepath)
         print("gentle_json ", request.data.get('gentle_josn') )
         try:
             gentle_json = GentleJson.objects.get(id = request.data.get('gentle_josn'))  
@@ -61,6 +64,15 @@ class VideoFrameViewSet(viewsets.ModelViewSet):
             video_frame_keys = frame_creater(frame_list)
             # print(video_frame_keys)
             VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list, video_frame_keys=video_frame_keys)
+            data = {
+                "pathIn":basepath+'/media/frames/', 
+                "pathOut":basepath+'/media/video/{}.avi'.format("audio_name"), 
+                "fps":24.0, 
+                "frame_data":video_frame_keys
+            }
+            # convert_frames_to_video_function(data)
+
+            async_task(convert_frames_to_video_function,data, hook=hook_video)
         except Exception as e:
             print("found error")
             print(e)
