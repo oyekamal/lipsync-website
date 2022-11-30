@@ -1,5 +1,5 @@
 import time
-from .models import GentleJson, File, VideoFrame
+from .models import GentleJson, File, VideoFrame, Video
 from .utils import add_normal_phonemes, framer_reader, frame_creater
 from django_q.tasks import async_task
 from .frametoVideo import  convert_frames_to_video_function
@@ -15,19 +15,29 @@ def hook_funcs(task):
     frame_list = framer_reader(gentle_json.json)
     video_frame_keys = frame_creater(frame_list)
     # print(video_frame_keys)
-    VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list, video_frame_keys=video_frame_keys)
+    videoframe = VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list, video_frame_keys=video_frame_keys)
     data = {
             "pathIn":basepath+'/media/frames/', 
             "pathOut":basepath+'/media/video/{}.avi'.format(file.remark), 
+            "video_output": '/media/video/{}.avi'.format(file.remark),
             "fps":24.0, 
-            "frame_data":video_frame_keys
+            "frame_data":video_frame_keys,
+            "baseUrl":task.result.get('baseUrl'),
+            "videoframe":videoframe
         }
 
     async_task(convert_frames_to_video_function,data, hook=hook_video)    
     print("The result is done for : ", task.result.get('file_id'))
 
 def hook_video(task):
+    try:
+        path = task.result.get('baseUrl') + task.result.get('video_output')
+        video = Video.objects.create(video_frame=task.result.get('videoframe'),video=path)
+    except Exception as e:
+        print("found exception in hook_video")
+        print(e) 
     print("video is done ")
+    # print(task.result)
 
 def sleepy_func(junk,sleep):
     print("sleep: ",sleep* junk )

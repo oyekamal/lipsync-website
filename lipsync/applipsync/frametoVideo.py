@@ -66,6 +66,7 @@ def convert_frames_to_video_function(data):
     pathOut= data['pathOut']
     fps=data['fps']
     frame_data=data['frame_data']
+    # baseUrl= data['baseUrl']
     # frame_array = []
     # files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f))]
 
@@ -101,6 +102,7 @@ def convert_frames_to_video_function(data):
     #     # writing to a image array
     #     out.write(frame_array[i])
     out.release()
+    return data
 
 
 def main():

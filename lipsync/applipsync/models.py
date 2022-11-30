@@ -30,3 +30,11 @@ class VideoFrame(models.Model):
 
     def __str__(self):
         return self.gentle_josn.file.remark
+
+class Video(models.Model):
+    video_frame = models.ForeignKey(VideoFrame, on_delete=models.CASCADE)
+    video = models.FileField(blank=False, null=False, upload_to='video/')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.video_frame.gentle_josn.file.remark

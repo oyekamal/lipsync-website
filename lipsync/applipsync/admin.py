@@ -6,3 +6,4 @@ from .models import *
 admin.site.register(File)
 admin.site.register(GentleJson)
 admin.site.register(VideoFrame)
+admin.site.register(Video)
