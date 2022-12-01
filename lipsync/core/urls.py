@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('applipsync.urls')),
     path('', include('store.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 

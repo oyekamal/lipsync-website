@@ -38,13 +38,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # app
+    'applipsync',
+    'store',
+
     # packages
     'rest_framework',
     'django_q',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',    
 
-    # app
-    'applipsync',
-    'store'
+
 ]
 
 MIDDLEWARE = [
@@ -76,6 +81,16 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 
 # Database
