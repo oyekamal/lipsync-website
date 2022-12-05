@@ -14,10 +14,13 @@
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-
+            <form action="" method='post'>
+                {% csrf_token %}
                 {{form|crispy}}
-                <button type="submit" class="btn btn-success">Save person</button>
+                <input type="submit" value="Submit">
 
+            </form>
+                
             </div>
         </div>
     </div>
