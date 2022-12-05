@@ -47,10 +47,12 @@ INSTALLED_APPS = [
     'django_q',
     'allauth',
     'allauth.account',
-    'allauth.socialaccount',    
+    'allauth.socialaccount',   
+    'crispy_forms', 
 
 
 ]
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
