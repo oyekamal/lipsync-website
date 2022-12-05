@@ -29,7 +29,7 @@ def test(request):
 
 
 def Fileuploadrederer(request):
-    print(request)
+    print(f"{request.scheme}://{request.META['HTTP_HOST']}")
     if request.method == 'GET':
         form = FileUploadForm
         mydict = {
@@ -39,15 +39,16 @@ def Fileuploadrederer(request):
 
     else:
         try:
+            request.POST._mutable=True
+            request.POST['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
+            request.POST._mutable=False
             form = FileUploadForm(request.POST, request.FILES)
             if form.is_valid():
 
                 form.save()
-                print(form)
             else:
                 print(form.errors())
-            # {'csrfmiddlewaretoken': ['gue4rN9myMcCPO09Y0PrHK54FyUd2V0Fp8OAM6eRzJJw3bww2femxtKPF10WlGoU'], 'audio': ['software4.wav'], 'script': ['software4.txt'], 'remark': ['asd']}>
-            # File.objects.create(audio=request.POST['audio'],script=request.POST['script'],remark=request.POST['remark'])
+
         except Exception as e:
             print(e)
 

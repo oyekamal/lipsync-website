@@ -18,8 +18,8 @@ def hook_funcs(task):
     videoframe = VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list, video_frame_keys=video_frame_keys)
     data = {
             "pathIn":basepath+'/media/frames/', 
-            "pathOut":basepath+'/media/video/{}.avi'.format(file.remark), 
-            "video_output": '/media/video/{}.avi'.format(file.remark),
+            "pathOut":basepath+'/media/video/{}.avi'.format(file.name), 
+            "video_output": '/media/video/{}.avi'.format(file.name),
             "fps":24.0, 
             "frame_data":video_frame_keys,
             "baseUrl":task.result.get('baseUrl'),

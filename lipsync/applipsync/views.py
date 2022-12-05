@@ -2,8 +2,8 @@ from rest_framework import viewsets
 from rest_framework import status
 from rest_framework.response import Response
 
-from.models import *
-from.serializers import *
+from .models import *
+from .serializers import *
 from .gentle_request import gentle_json
 from django_q.tasks import async_task
 from .q_services import sleepy_func, hook_funcs, hook_video
@@ -24,6 +24,10 @@ class FileViewSet(viewsets.ModelViewSet):
 
     def create(self, request, *args, **kwargs):
         print("yes working")
+        request.data._mutable=True
+        request.data['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
+        request.data._mutable=False
+
         serializer = self.get_serializer(data=request.data)
         print(request.data.get('audio'))
         serializer.is_valid(raise_exception=True)

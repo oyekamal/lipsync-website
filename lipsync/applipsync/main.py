@@ -5,9 +5,11 @@ import json
 # from frametoVideo import  convert_frames_to_video_function
 url = "http://localhost:49153/transcriptions?async=false"
 
-audio_path = 'C:/Users/cacf/Documents/website_work/lipsync/media/audio/software4_2B8O2Qi.wav'
-transcript_path = 'C:/Users/cacf/Documents/website_work/lipsync/media/script/software4_5slTaCa.txt'
+audio_path = "C:/Users/cacf/Documents/website_work/lipsync/media/audio/software4_EhiBUIG.wav"
+transcript_path = "C:/Users/cacf/Documents/website_work/lipsync/media/script/software4_batIAza.txt"
 
+# audio_path = audio_path.replace('\\', '/')
+# transcript_path = transcript_path.replace('\\', '/')
 
 audio_name = audio_path.split('/')[-1]
 transcript_name = transcript_path.split('/')[-1]
