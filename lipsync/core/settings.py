@@ -141,10 +141,10 @@ USE_TZ = True
 # settings.py example
 Q_CLUSTER = {
     'name': 'myproject',
-    'workers': 3,
+    'workers': 1,
     'recycle': 500,
-    'timeout': 120,
-    'retry': 120,
+    'timeout': 240,
+    'retry': 240,
     'compress': True,
     'save_limit': 250,
     'queue_limit': 500,
