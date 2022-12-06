@@ -12,7 +12,7 @@ def hook_funcs(task):
     json = add_normal_phonemes(task.result.get('gentle_data'))
     basepath = task.result.get('base')
     gentle_json = GentleJson.objects.create(file=file, json=json)
-    frame_list = framer_reader(gentle_json.json)
+    frame_list = framer_reader(gentle_json.json,file.mouth.title)
     video_frame_keys = frame_creater(frame_list)
     # print(video_frame_keys)
     videoframe = VideoFrame.objects.create(gentle_josn=gentle_json, video_frame=frame_list, video_frame_keys=video_frame_keys)

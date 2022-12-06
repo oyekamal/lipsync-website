@@ -21,6 +21,7 @@ def qjob(sender, instance, created, **kwargs):
             'base': basepath,
             'file_id':serializer.data.get('id'),
             "baseUrl":serializer.data.get('host'),
+            "mouth":serializer.data.get('mouth')
         }
 
         print("------------------------signal----------------------------")

@@ -14,6 +14,6 @@ class FileUploadForm(ModelForm):
     class Meta:
         model = File
         # fields = ('__all__')
-        fields = ('audio', 'script', 'name', 'host')
+        fields = ('audio', 'script', 'name', 'host', 'mouth')
         widgets = {'host': forms.HiddenInput()}
 
