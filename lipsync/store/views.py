@@ -29,7 +29,7 @@ def test(request):
 
 
 def Fileuploadrederer(request):
-    print(f"{request.scheme}://{request.META['HTTP_HOST']}")
+    print( "request before   ",request.POST)
     if request.method == 'GET':
         form = FileUploadForm
         mydict = {
@@ -41,10 +41,16 @@ def Fileuploadrederer(request):
         try:
             request.POST._mutable=True
             request.POST['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
-            request.POST._mutable=False
-            form = FileUploadForm(request.POST, request.FILES)
-            if form.is_valid():
+            # request.POST._mutable=False
+            request_data = request.POST.copy()
+            request_file = request.FILES.copy()
+            request_data['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
+            print("reqeust after", request_data)
+            print("reqeust after", request_file)
+            form = FileUploadForm(request_data, request_file)
 
+            
+            if form.is_valid():
                 form.save()
             else:
                 print(form.errors())

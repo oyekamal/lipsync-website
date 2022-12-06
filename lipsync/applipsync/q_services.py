@@ -31,6 +31,7 @@ def hook_funcs(task):
 
 def hook_video(task):
     try:
+        print("basaURL", task.result.get('baseUrl'))
         path = task.result.get('baseUrl') + task.result.get('video_output')
         video = Video.objects.create(video_frame=task.result.get('videoframe'),video=path)
     except Exception as e:
