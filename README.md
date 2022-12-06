@@ -4,7 +4,7 @@
 
 
 This Project is deprecated on
-docker run -P lowerquality/gentle
+docker run -p 49153:8765 -d lowerquality/gentle
 
 important
 https://github.com/khabdrick/django-job-queue-article/tree/main/project

@@ -1,5 +1,5 @@
 import requests
-import json
+import json, time
 # from django.conf import settings
 # basepath = settings.BASE_DIR
 
@@ -50,10 +50,22 @@ def gentle_json(data):
     headers = {}
 
     print("time extraction from gentle...!")
-    response = requests.request(
-        "POST", url, headers=headers, data=payload, files=files)
-
-    gentle_data = response.text
+    
+    gentle_data = None
+    while gentle_data == None:
+        try:
+            response = requests.request(
+                "POST", url, headers=headers, data=payload, files=files)
+            gentle_data = response.text
+            break
+        except:
+            print("Connection refused by the server..")
+            print("Let me sleep for 5 seconds")
+            print("ZZzzzz...")
+            time.sleep(5)
+            print("Was a nice sleep, now let me continue...")
+            continue
+    
 
     json_saving_path = path + "/media/json/"
     with open(json_saving_path + "{}.json".format(audio_name), "w") as outfile:

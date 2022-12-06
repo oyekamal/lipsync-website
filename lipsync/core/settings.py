@@ -95,7 +95,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 LOGIN_REDIRECT_URL = '/'
-
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
@@ -141,9 +141,10 @@ USE_TZ = True
 # settings.py example
 Q_CLUSTER = {
     'name': 'myproject',
-    'workers': 1,
+    'workers': 8,
     'recycle': 500,
-    'timeout': 60,
+    'timeout': 120,
+    'retry': 120,
     'compress': True,
     'save_limit': 250,
     'queue_limit': 500,
