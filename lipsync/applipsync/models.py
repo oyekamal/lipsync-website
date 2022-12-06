@@ -7,6 +7,7 @@ from jsonfield import JSONField
 class Mouth(models.Model):
     title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    a_e_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
 
     def __str__(self):
         return self.title

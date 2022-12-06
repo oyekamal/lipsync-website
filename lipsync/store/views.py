@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import UserForm, FileUploadForm
+from .forms import UserForm, FileUploadForm, MouthForm
 from applipsync.models import File
 # Create your views here.
 
@@ -59,3 +59,31 @@ def Fileuploadrederer(request):
             print(e)
 
         return redirect('/')
+
+def Mouthrederer(request):
+    print( "request before   ",request.POST)
+    if request.method == 'GET':
+        form = MouthForm
+        mydict = {
+            'form': form,
+        }
+        return render(request, 'store/upload.html', context=mydict)
+
+    else:
+        try:
+            request_data = request.POST.copy()
+            request_file = request.FILES.copy()
+
+            form = MouthForm(request_data, request_file)
+
+            
+            if form.is_valid():
+                form.save()
+            else:
+                print(form.errors())
+
+        except Exception as e:
+            print(e)
+
+        return redirect('/')
+

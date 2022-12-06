@@ -1,7 +1,7 @@
 from django.forms import ModelForm
 
 from django.contrib.auth.models import User
-from applipsync.models import File
+from applipsync.models import File, Mouth
 from django import forms
 
 
@@ -16,4 +16,11 @@ class FileUploadForm(ModelForm):
         # fields = ('__all__')
         fields = ('audio', 'script', 'name', 'host', 'mouth')
         widgets = {'host': forms.HiddenInput()}
+
+class MouthForm(ModelForm):
+    class Meta:
+        model = Mouth
+        fields = ('__all__')
+        # fields = ('audio', 'script', 'name', 'host', 'mouth')
+        # widgets = {'host': forms.HiddenInput()}
 
