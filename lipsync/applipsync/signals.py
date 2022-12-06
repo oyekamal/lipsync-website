@@ -6,8 +6,7 @@ from django_q.tasks import async_task
 from .q_services import hook_funcs
 from django.conf import settings
 from .serializers import *
-import os
-
+import os, shutil
 basepath = settings.BASE_DIR
 basepath = str(basepath).replace("\\", '/')
 
@@ -36,6 +35,15 @@ def qjob(sender, instance, created, **kwargs):
         
 @receiver(post_save, sender=Mouth)
 def updatePath(sender, instance, created, **kwargs):
+        # >>> initial_path = car.photo.path
+        # >>> car.photo.name = 'cars/chevy_ii.jpg'
+        # >>> new_path = settings.MEDIA_ROOT + car.photo.name
+        # >>> # Move the file on the filesystem
+        # >>> os.rename(initial_path, new_path)
+        # >>> car.save()
+        # >>> car.photo.path
+        # '/media/cars/chevy_ii.jpg'
+        # >>> car.photo.path == new_path
     if created:
         print("creating folder")
         folder_name = instance.title
@@ -48,3 +56,8 @@ def updatePath(sender, instance, created, **kwargs):
             os.makedirs(path)
         else:
             print("path found")
+
+        folder_name = instance.title
+        shutil.move(instance.a_e_h.path, path+'/a_e_h.png')
+        instance.a_e_h.path = str(path) +'/a_e_h.png'
+        instance.save()
