@@ -7,6 +7,29 @@
 {% block content %}
 
     <h1>{{file.name}}</h1>
+    {% if gentle_json %}
+    <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">Word</th>
+            <th scope="col">start</th>
+            <th scope="col">end</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for each_word in gentle_json.json.words %}
+          <tr>
+            <td>{{each_word.word}}</td>
+            <td>{{each_word.start}}</td>
+            <td>{{each_word.end}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+    <h3>{{file.name}} working in progress ...!</h3>
+    {% endif %}
+
 
 {% endblock %}
 
