@@ -1,11 +1,10 @@
 from django.db import models
 from jsonfield import JSONField
-
 # Create your models here.
 
 
 class Mouth(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(unique=True,max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     a_e_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
     d_j_ch_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
