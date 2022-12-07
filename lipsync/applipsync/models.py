@@ -8,6 +8,15 @@ class Mouth(models.Model):
     title = models.CharField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
     a_e_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    d_j_ch_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    f_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    l_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    m_b_close_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    o_big_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    o_small_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    oh_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    th_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
+    trans_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/')
 
     def __str__(self):
         return self.title
