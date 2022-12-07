@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserForm, FileUploadForm, MouthForm
 from applipsync.models import File
 # Create your views here.
@@ -93,3 +93,10 @@ def list_of_files(request):
     else:
         files = File.objects.all()
         return render(request, 'store/list_of_files.html', context={'files': files})
+
+def video_details(request, slug):
+    if not request.user.is_authenticated:
+        return redirect('/')
+    else:
+        file = get_object_or_404(File, slug=slug)
+        return render(request, 'store/video_details.html', context={'file': file})

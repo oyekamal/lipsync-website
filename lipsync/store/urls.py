@@ -10,6 +10,7 @@ urlpatterns = [
     path('upload/',views.Fileuploadrederer, name='upload'),
     path('mouth/',views.Mouthrederer, name='mouth'),
     path('files/',views.list_of_files, name='files'),
-    
+    path('video_details/<slug:slug>/', views.video_details, name="video_details"),
+
 
 ]

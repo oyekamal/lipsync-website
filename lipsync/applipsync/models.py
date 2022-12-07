@@ -35,8 +35,8 @@ class File(models.Model):
     def __str__(self):
         return self.name + " : " +self.mouth.title
 
-    # def get_absolute_url(self):
-    #     return reverse("store:video_details", args=[self.slug])
+    def get_absolute_url(self):
+        return reverse("store:video_details", args=[self.slug])
 
 
 class GentleJson(models.Model):
