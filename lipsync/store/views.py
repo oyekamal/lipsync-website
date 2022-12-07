@@ -29,61 +29,67 @@ def test(request):
 
 
 def Fileuploadrederer(request):
-    print( "request before   ",request.POST)
-    if request.method == 'GET':
-        form = FileUploadForm
-        mydict = {
-            'form': form,
-        }
-        return render(request, 'store/upload.html', context=mydict)
-
-    else:
-        try:
-            request.POST._mutable=True
-            request.POST['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
-            # request.POST._mutable=False
-            request_data = request.POST.copy()
-            request_file = request.FILES.copy()
-            request_data['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
-            print("reqeust after", request_data)
-            print("reqeust after", request_file)
-            form = FileUploadForm(request_data, request_file)
-
-            
-            if form.is_valid():
-                form.save()
-            else:
-                print(form.errors())
-
-        except Exception as e:
-            print(e)
-
+    if not request.user.is_authenticated:
         return redirect('/')
+    else:
+        if request.method == 'GET':
+            form = FileUploadForm
+            mydict = {
+                'form': form,
+            }
+            return render(request, 'store/upload.html', context=mydict)
+
+        else:
+            try:
+                request.POST._mutable = True
+                request.POST['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
+                # request.POST._mutable=False
+                request_data = request.POST.copy()
+                request_file = request.FILES.copy()
+                request_data['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
+                print("reqeust after", request_data)
+                print("reqeust after", request_file)
+                form = FileUploadForm(request_data, request_file)
+
+                if form.is_valid():
+                    form.save()
+                else:
+                    print(form.errors())
+
+            except Exception as e:
+                print(e)
+            return redirect('/')
+
 
 def Mouthrederer(request):
-    print( "request before   ",request.POST)
-    if request.method == 'GET':
-        form = MouthForm
-        mydict = {
-            'form': form,
-        }
-        return render(request, 'store/upload.html', context=mydict)
-
-    else:
-        try:
-            request_data = request.POST.copy()
-            request_file = request.FILES.copy()
-
-            form = MouthForm(request_data, request_file)
-
-            
-            if form.is_valid():
-                form.save()
-            else:
-                print(form.errors())
-
-        except Exception as e:
-            print(e)
-
+    if not request.user.is_authenticated:
         return redirect('/')
+    else:
+        if request.method == 'GET':
+            form = MouthForm
+            mydict = {
+                'form': form,
+            }
+            return render(request, 'store/upload.html', context=mydict)
+        else:
+            try:
+                request_data = request.POST.copy()
+                request_file = request.FILES.copy()
+                form = MouthForm(request_data, request_file)
+                if form.is_valid():
+                    form.save()
+                else:
+                    print(form.errors())
+            except Exception as e:
+                print(e)
+            return redirect('/')
 
+
+def list_of_files(request):
+    files = File.objects.all()
+    # context = {'data', data}
+    if not request.user.is_authenticated:
+        return redirect('/')
+    else:
+        files = File.objects.all()
+        return render(request, 'store/list_of_files.html', context={'files': files})

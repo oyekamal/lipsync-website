@@ -1,5 +1,7 @@
 from django.db import models
 from jsonfield import JSONField
+from django.urls import reverse
+
 # Create your models here.
 
 
@@ -28,9 +30,13 @@ class File(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     host = models.CharField(max_length=100, null=True, blank=True)
     mouth = models.ForeignKey(Mouth, on_delete=models.CASCADE, null=True)
+    slug = models.SlugField(max_length=255)
 
     def __str__(self):
         return self.name + " : " +self.mouth.title
+
+    # def get_absolute_url(self):
+    #     return reverse("store:video_details", args=[self.slug])
 
 
 class GentleJson(models.Model):
@@ -52,7 +58,6 @@ class VideoFrame(models.Model):
 
     def __str__(self):
         return self.gentle_josn.file.name
-
 
 class Video(models.Model):
     video_frame = models.ForeignKey(VideoFrame, on_delete=models.CASCADE)

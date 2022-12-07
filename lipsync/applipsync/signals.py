@@ -8,6 +8,8 @@ from django.conf import settings
 from .serializers import *
 import os
 import shutil
+import uuid 
+uuid.uuid4().hex[:6].upper()
 basepath = settings.BASE_DIR
 basepath = str(basepath).replace("\\", '/')
 
@@ -15,6 +17,8 @@ basepath = str(basepath).replace("\\", '/')
 @receiver(post_save, sender=File)
 def qjob(sender, instance, created, **kwargs):
     if created:
+        instance.slug = instance.name + "_" + uuid.uuid4().hex[:6].upper()
+        instance.save()
         serializer = FileSerializer(instance)
 
         data = {
