@@ -6,7 +6,24 @@
 
 {% block content %}
 
-    <h1>{{file.name}}</h1>
+{% if video %}
+<div class="jumbotron">
+    <h1 class="display-4">Ready!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility {{video.video}} classes for {{video.video.url}} typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href='' onclick="httpGet()" role="button">Download</a>
+</div>
+{% else %}
+<div class="jumbotron">
+    <h1 class="display-4">Pending!</h1>
+    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <!-- <a class="btn btn-lg" href={{video.video}} role="button">N</a> -->
+</div>
+{% endif %}
+
     {% if gentle_json %}
     <table class="table table-sm">
         <thead>
@@ -30,6 +47,9 @@
     <h3>{{file.name}} working in progress ...!</h3>
     {% endif %}
 
+
+<!-- {% load static %} -->
+<!-- <script src="{% static 'js/get.js' %}"></script> -->
 
 {% endblock %}
 
