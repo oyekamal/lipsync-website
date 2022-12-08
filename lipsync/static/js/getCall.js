@@ -5,7 +5,25 @@
 //     xmlHttpReq.send(null);
 //     return xmlHttpReq.responseText;
 //   }
-console.log("js file");
-function create(){
+// console.log("js file");
+function create(value = "function"){
+  console.log(value)
   console.log("yes bro its working function");
+}
+
+
+function downloadFile(urlToSend) {
+  var req = new XMLHttpRequest();
+  req.open("GET", urlToSend, true);
+  req.responseType = "blob";
+  req.onload = function (event) {
+      var blob = req.response;
+      // var fileName = req.getResponseHeader("fileName") //if you have the fileName header available
+      var link=document.createElement('a');
+      link.href=window.URL.createObjectURL(blob);
+      // link.download=fileName;
+      link.click();
+  };
+
+  req.send();
 }
