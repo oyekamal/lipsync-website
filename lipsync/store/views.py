@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .forms import UserForm, FileUploadForm, MouthForm
-from applipsync.models import File,GentleJson,VideoFrame,Video
+from applipsync.models import File, GentleJson, VideoFrame, Video
 # Create your views here.
 
 
@@ -94,27 +94,26 @@ def list_of_files(request):
         files = File.objects.all()
         return render(request, 'store/list_of_files.html', context={'files': files})
 
+
 def video_details(request, slug):
     if not request.user.is_authenticated:
         return redirect('/')
     else:
         video = None
         video_frame = None
+        gentle_json = None
         file = get_object_or_404(File, slug=slug)
         gentle_json = GentleJson.objects.filter(file=file)
         if gentle_json:
             video_frame = VideoFrame.objects.filter(gentle_josn=gentle_json[0])
-            gentle_json= gentle_json[0]
+            gentle_json = gentle_json[0]
         if video_frame:
-            print(video_frame)
             video = Video.objects.filter(video_frame=video_frame[0])
             if video:
                 video = video[0]
-        print(gentle_json.json)
         data = {'file': file,
                 'gentle_json': gentle_json,
                 "video_frame": video_frame,
-                "video":video}
+                "video": video}
 
         return render(request, 'store/video_details.html', context=data)
-

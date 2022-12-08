@@ -17,7 +17,7 @@ basepath = str(basepath).replace("\\", '/')
 @receiver(post_save, sender=File)
 def qjob(sender, instance, created, **kwargs):
     if created:
-        instance.slug = instance.name + "_" + uuid.uuid4().hex[:6].upper()
+        instance.slug = instance.name.replace(' ', "_") + "_" + uuid.uuid4().hex[:6].upper()
         instance.save()
         serializer = FileSerializer(instance)
 
