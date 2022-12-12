@@ -6,19 +6,25 @@
 
 {% block content %}
 
-
+<!-- 
     {% for file in files %}
     <div class="card">
-        <!-- <div class="card-header">
-          {{file.name}}
-        </div> -->
         <div class="card-body">
           <h5 class="card-title">{{file.name}}</h5>
           <p class="card-text"> created at {{file.created_at}}</p>
           <a href="{{ file.get_absolute_url }}" class="btn btn-primary">Details</a>
         </div>
       </div>
-    {% endfor %}
+    {% endfor %} -->
+
+    <div class="list-group p-4 ">
+        {% for file in files %}
+        <div class="p-2">
+            <a href="{{ file.get_absolute_url }}" class="list-group-item list-group-item-action"> {{file.name}} </a>
+        </div>
+        
+        {% endfor %}
+    </div>
 
 {% endblock %}
 

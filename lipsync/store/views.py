@@ -54,11 +54,14 @@ def Fileuploadrederer(request):
                 if form.is_valid():
                     form.save()
                 else:
-                    print(form.errors())
-
+                    print("files ERROR------->")
+                    print(form.errors)
+                    # return redirect('/files/') 
+                  
             except Exception as e:
+                print('Exception......')
                 print(e)
-            return redirect('/')
+            return render(request, 'store/upload.html', {'form': form})
 
 
 def Mouthrederer(request):
@@ -70,7 +73,7 @@ def Mouthrederer(request):
             mydict = {
                 'form': form,
             }
-            return render(request, 'store/upload.html', context=mydict)
+            return render(request, 'store/mouth.html', context=mydict)
         else:
             try:
                 request_data = request.POST.copy()
@@ -79,10 +82,11 @@ def Mouthrederer(request):
                 if form.is_valid():
                     form.save()
                 else:
-                    print(form.errors())
+                    print(form.errors)
             except Exception as e:
                 print(e)
-            return redirect('/')
+            return render(request, 'store/mouth.html', {'form': form})
+
 
 
 def list_of_files(request):

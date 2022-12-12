@@ -4,7 +4,6 @@ from django.contrib.auth.models import User
 from applipsync.models import File, Mouth
 from django import forms
 
-
 class UserForm(ModelForm):
     class Meta:
         model = User
