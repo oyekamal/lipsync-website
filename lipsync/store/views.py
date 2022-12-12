@@ -53,6 +53,7 @@ def Fileuploadrederer(request):
 
                 if form.is_valid():
                     form.save()
+                    return render(request, 'store/upload.html', {'form': form, 'success':True})
                 else:
                     print("files ERROR------->")
                     print(form.errors)
@@ -81,6 +82,7 @@ def Mouthrederer(request):
                 form = MouthForm(request_data, request_file)
                 if form.is_valid():
                     form.save()
+                    return render(request, 'store/mouth.html', {'form': form, 'success':True})
                 else:
                     print(form.errors)
             except Exception as e:
