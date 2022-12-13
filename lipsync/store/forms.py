@@ -10,11 +10,15 @@ class UserForm(ModelForm):
         fields = ('username', 'password', 'first_name', 'last_name', 'email')
 
 class FileUploadForm(ModelForm):
+    def __init__(self, user, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['mouth'].queryset=Mouth.objects.filter(user=user)
     class Meta:
         model = File
         # fields = ('__all__')
-        fields = ('audio', 'script', 'name', 'host', 'mouth')
-        widgets = {'host': forms.HiddenInput()}
+        fields = ('audio', 'script', 'name', 'host', 'mouth','user')
+        widgets = {'host': forms.HiddenInput(),'user': forms.HiddenInput()}
+        
 
 class MouthForm(ModelForm):
     class Meta:

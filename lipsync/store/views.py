@@ -33,7 +33,7 @@ def Fileuploadrederer(request):
         return redirect('/')
     else:
         if request.method == 'GET':
-            form = FileUploadForm
+            form = FileUploadForm(request.user)
             mydict = {
                 'form': form,
             }
@@ -47,6 +47,7 @@ def Fileuploadrederer(request):
                 request_data = request.POST.copy()
                 request_file = request.FILES.copy()
                 request_data['host'] = f"{request.scheme}://{request.META['HTTP_HOST']}"
+                request_data['user'] = request.user
                 print("reqeust after", request_data)
                 print("reqeust after", request_file)
                 form = FileUploadForm(request_data, request_file)
@@ -97,7 +98,7 @@ def list_of_files(request):
     if not request.user.is_authenticated:
         return redirect('/')
     else:
-        files = File.objects.all()
+        files = File.objects.filter(user=request.user)
         return render(request, 'store/list_of_files.html', context={'files': files})
 
 
