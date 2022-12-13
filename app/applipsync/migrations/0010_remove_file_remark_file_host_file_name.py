@@ -6,22 +6,22 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('applipsync', '0009_video'),
+        ("applipsync", "0009_video"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='file',
-            name='remark',
+            model_name="file",
+            name="remark",
         ),
         migrations.AddField(
-            model_name='file',
-            name='host',
+            model_name="file",
+            name="host",
             field=models.CharField(blank=True, max_length=100, null=True),
         ),
         migrations.AddField(
-            model_name='file',
-            name='name',
+            model_name="file",
+            name="name",
             field=models.CharField(default=1, max_length=50),
             preserve_default=False,
         ),

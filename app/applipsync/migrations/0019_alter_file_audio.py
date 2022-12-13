@@ -7,13 +7,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('applipsync', '0018_alter_file_audio_alter_file_script'),
+        ("applipsync", "0018_alter_file_audio_alter_file_script"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='file',
-            name='audio',
-            field=models.FileField(upload_to='audio/', validators=[django.core.validators.FileExtensionValidator(['mp3', 'wav'])]),
+            model_name="file",
+            name="audio",
+            field=models.FileField(
+                upload_to="audio/",
+                validators=[
+                    django.core.validators.FileExtensionValidator(["mp3", "wav"])
+                ],
+            ),
         ),
     ]

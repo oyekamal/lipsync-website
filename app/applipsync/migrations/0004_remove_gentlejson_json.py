@@ -6,12 +6,12 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('applipsync', '0003_gentlejson'),
+        ("applipsync", "0003_gentlejson"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='gentlejson',
-            name='json',
+            model_name="gentlejson",
+            name="json",
         ),
     ]

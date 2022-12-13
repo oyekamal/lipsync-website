@@ -6,13 +6,13 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('applipsync', '0015_alter_mouth_title'),
+        ("applipsync", "0015_alter_mouth_title"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='file',
-            name='slug',
+            model_name="file",
+            name="slug",
             field=models.SlugField(default=1, max_length=255, unique=True),
             preserve_default=False,
         ),

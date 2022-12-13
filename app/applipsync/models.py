@@ -1,34 +1,75 @@
-from django.db import models
-from jsonfield import JSONField
-from django.urls import reverse
-from django.core.validators import FileExtensionValidator
 from django.contrib.auth.models import User
+from django.core.validators import FileExtensionValidator
+from django.db import models
+from django.urls import reverse
+from jsonfield import JSONField
+
 # Create your models here.
 
 
 class Mouth(models.Model):
     title = models.CharField(unique=True, max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
-    a_e_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/',
-                             validators=[FileExtensionValidator(['png'])])
+    a_e_h = models.FileField(
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
     d_j_ch_h = models.FileField(
-        blank=False, null=False, upload_to='images/test_normal/', validators=[FileExtensionValidator(['png'])])
-    f_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/',
-                           validators=[FileExtensionValidator(['png'])])
-    l_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/',
-                           validators=[FileExtensionValidator(['png'])])
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
+    f_h = models.FileField(
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
+    l_h = models.FileField(
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
     m_b_close_h = models.FileField(
-        blank=False, null=False, upload_to='images/test_normal/', validators=[FileExtensionValidator(['png'])])
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
     o_big_h = models.FileField(
-        blank=False, null=False, upload_to='images/test_normal/', validators=[FileExtensionValidator(['png'])])
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
     o_small_h = models.FileField(
-        blank=False, null=False, upload_to='images/test_normal/', validators=[FileExtensionValidator(['png'])])
-    oh_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/',
-                            validators=[FileExtensionValidator(['png'])])
-    th_h = models.FileField(blank=False, null=False, upload_to='images/test_normal/',
-                            validators=[FileExtensionValidator(['png'])])
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
+    oh_h = models.FileField(
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
+    th_h = models.FileField(
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
     trans_h = models.FileField(
-        blank=False, null=False, upload_to='images/test_normal/', validators=[FileExtensionValidator(['png'])])
+        blank=False,
+        null=False,
+        upload_to="images/test_normal/",
+        validators=[FileExtensionValidator(["png"])],
+    )
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
 
     def __str__(self):
@@ -36,10 +77,18 @@ class Mouth(models.Model):
 
 
 class File(models.Model):
-    audio = models.FileField(blank=False, null=False, upload_to='audio/',
-                             validators=[FileExtensionValidator(['mp3', 'wav'])])
-    script = models.FileField(blank=False, null=False, upload_to='script/',
-                              validators=[FileExtensionValidator(['txt'])])
+    audio = models.FileField(
+        blank=False,
+        null=False,
+        upload_to="audio/",
+        validators=[FileExtensionValidator(["mp3", "wav"])],
+    )
+    script = models.FileField(
+        blank=False,
+        null=False,
+        upload_to="script/",
+        validators=[FileExtensionValidator(["txt"])],
+    )
     name = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     host = models.CharField(max_length=100, null=True, blank=True)
@@ -65,8 +114,7 @@ class GentleJson(models.Model):
 
 
 class VideoFrame(models.Model):
-    gentle_josn = models.ForeignKey(
-        GentleJson, on_delete=models.CASCADE, null=True)
+    gentle_josn = models.ForeignKey(GentleJson, on_delete=models.CASCADE, null=True)
     video_frame = JSONField(null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     video_frame_keys = JSONField(null=True)
@@ -77,7 +125,7 @@ class VideoFrame(models.Model):
 
 class Video(models.Model):
     video_frame = models.ForeignKey(VideoFrame, on_delete=models.CASCADE)
-    video = models.FileField(blank=False, null=False, upload_to='video/')
+    video = models.FileField(blank=False, null=False, upload_to="video/")
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

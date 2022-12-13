@@ -1,4 +1,3 @@
-
 import argparse
 import json
 import os
@@ -6,6 +5,7 @@ from datetime import datetime
 from os.path import isfile, join
 
 import cv2
+
 # import numpy as np
 
 # # Initialize parser
@@ -17,10 +17,10 @@ import cv2
 # mypath = './frames/headFrames/'
 
 
-
-
 def convert_frames_to_video(pathIn, pathOut, fps):
-    frame_data = open('C:/Users/cacf/Documents/website_work/lipsync/common/frameCreationInfo/frameCreationInfo.json')
+    frame_data = open(
+        "C:/Users/cacf/Documents/website_work/lipsync/common/frameCreationInfo/frameCreationInfo.json"
+    )
 
     frame_data = json.load(frame_data)
     frame_array = []
@@ -28,20 +28,20 @@ def convert_frames_to_video(pathIn, pathOut, fps):
 
     # for sorting the file names properly
     # files.sort(key = lambda x: int(x[5:-4]))
-    filename = pathIn + frame_data['frame_key']['0'] + '.png'
+    filename = pathIn + frame_data["frame_key"]["0"] + ".png"
     img = cv2.imread(filename)
     height, width, layers = img.shape
     size = (width, height)
 
-    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
-    for counter in range(len(frame_data['frame_key'])):
+    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*"DIVX"), fps, size)
+    for counter in range(len(frame_data["frame_key"])):
 
         # print(number)
         # counter +=1
         # files = str(counter) + '.png'
         # print(files)
 
-        filename = pathIn + frame_data['frame_key'][str(counter)] + '.png'
+        filename = pathIn + frame_data["frame_key"][str(counter)] + ".png"
         img = cv2.imread(filename)
         # height, width, layers = img.shape
         # # dim = (653, 1158)
@@ -62,30 +62,30 @@ def convert_frames_to_video(pathIn, pathOut, fps):
 
 def convert_frames_to_video_function(data):
     print("convert_frames_to_video_function.....")
-    pathIn=data['pathIn']
-    pathOut= data['pathOut']
-    fps=data['fps']
-    frame_data=data['frame_data']
+    pathIn = data["pathIn"]
+    pathOut = data["pathOut"]
+    fps = data["fps"]
+    frame_data = data["frame_data"]
     # baseUrl= data['baseUrl']
     # frame_array = []
     # files = [f for f in os.listdir(pathIn) if isfile(join(pathIn, f))]
 
     # for sorting the file names properly
     # files.sort(key = lambda x: int(x[5:-4]))
-    filename = pathIn + frame_data['frame_key'][0] + '.png'
+    filename = pathIn + frame_data["frame_key"][0] + ".png"
     img = cv2.imread(filename)
     height, width, layers = img.shape
     size = (width, height)
 
-    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*'DIVX'), fps, size)
-    for counter in range(len(frame_data['frame_key'])):
+    out = cv2.VideoWriter(pathOut, cv2.VideoWriter_fourcc(*"DIVX"), fps, size)
+    for counter in range(len(frame_data["frame_key"])):
 
         # print(number)
         # counter +=1
         # files = str(counter) + '.png'
         # print(files)
 
-        filename = pathIn + frame_data['frame_key'][counter] + '.png'
+        filename = pathIn + frame_data["frame_key"][counter] + ".png"
         img = cv2.imread(filename)
         # height, width, layers = img.shape
         # # dim = (653, 1158)
@@ -108,8 +108,8 @@ def convert_frames_to_video_function(data):
 def main():
     # pathIn= './frames/headFrames/'
     # pathIn= './frames/bodyFrames/'
-    pathIn = 'C:/Users/cacf/Documents/website_work/lipsync/media/frames/'
-    pathOut = 'C:/Users/cacf/Documents/website_work/lipsync/media/video/testing.avi'
+    pathIn = "C:/Users/cacf/Documents/website_work/lipsync/media/frames/"
+    pathOut = "C:/Users/cacf/Documents/website_work/lipsync/media/video/testing.avi"
 
     # # Read arguments from command line
     # args = parser.parse_args()

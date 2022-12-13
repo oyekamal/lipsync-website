@@ -1,5 +1,8 @@
+import json
+import time
+
 import requests
-import json, time
+
 # from django.conf import settings
 # basepath = settings.BASE_DIR
 
@@ -18,16 +21,16 @@ def gentle_json(data):
     url = "http://localhost:49153/transcriptions?async=false"
 
     # basepath = settings.BASE_DIR
-    basepath = data.get('base')
-    script_file = data.get('script')
-    audio_file = data.get('audio')
+    basepath = data.get("base")
+    script_file = data.get("script")
+    audio_file = data.get("audio")
     print("basepath  ", basepath)
-    print(script_file, '  ', audio_file)
+    print(script_file, "  ", audio_file)
     print("sending... requests")
     # print("BASE_DIR ",str(path))
-    path = str(basepath).replace("\\", '/')
-    audio_path = path + '/media/audio/'+audio_file.split('/')[-1]
-    transcript_path = path + '/media/script/'+script_file.split('/')[-1]
+    path = str(basepath).replace("\\", "/")
+    audio_path = path + "/media/audio/" + audio_file.split("/")[-1]
+    transcript_path = path + "/media/script/" + script_file.split("/")[-1]
 
     print(audio_path)
     print(transcript_path)
@@ -35,13 +38,13 @@ def gentle_json(data):
     # audio_path = audio_file
     # transcript_path = script_file
 
-    audio_name = audio_path.split('/')[-1]
-    transcript_name = transcript_path.split('/')[-1]
-    file_type = 'audio/{}'.format(audio_name.split('.')[-1])
+    audio_name = audio_path.split("/")[-1]
+    transcript_name = transcript_path.split("/")[-1]
+    file_type = "audio/{}".format(audio_name.split(".")[-1])
     payload = {}
     files = [
-        ('audio', (audio_name, open(audio_path, 'rb'), file_type)),
-        ('transcript', (transcript_name, open(transcript_path, 'rb'), 'text/plain'))
+        ("audio", (audio_name, open(audio_path, "rb"), file_type)),
+        ("transcript", (transcript_name, open(transcript_path, "rb"), "text/plain")),
     ]
     # files = [
     #     ('audio', open(audio_file,'rb')),
@@ -50,12 +53,13 @@ def gentle_json(data):
     headers = {}
 
     print("time extraction from gentle...!")
-    
+
     gentle_data = None
     while gentle_data == None:
         try:
             response = requests.request(
-                "POST", url, headers=headers, data=payload, files=files)
+                "POST", url, headers=headers, data=payload, files=files
+            )
             gentle_data = response.text
             break
         except:
@@ -65,12 +69,11 @@ def gentle_json(data):
             time.sleep(5)
             print("Was a nice sleep, now let me continue...")
             continue
-    
 
     json_saving_path = path + "/media/json/"
     with open(json_saving_path + "{}.json".format(audio_name), "w") as outfile:
         outfile.write(gentle_data)
 
-    data['gentle_data'] = json.loads(gentle_data) 
-    data['base'] = basepath
+    data["gentle_data"] = json.loads(gentle_data)
+    data["base"] = basepath
     return data

@@ -6,14 +6,14 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('applipsync', '0012_file_mouth'),
+        ("applipsync", "0012_file_mouth"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='mouth',
-            name='a_e_h',
-            field=models.FileField(default=1, upload_to='images/test_normal/'),
+            model_name="mouth",
+            name="a_e_h",
+            field=models.FileField(default=1, upload_to="images/test_normal/"),
             preserve_default=False,
         ),
     ]
