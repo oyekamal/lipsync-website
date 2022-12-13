@@ -26,6 +26,34 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = int(os.environ.get("DEBUG", default=0))
 
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+# CORS_ALLOWED_ORIGINS = ["http://localhost:1337", "http://localhost:8000"]
+
+# CORS_ORIGIN_WHITELIST = (
+#     'localhost:1337',
+#     'localhost',
+#     'localhost:8000',
+# )
+
+# CSRF_TRUSTED_ORIGINS = ['http://localhost:8000','http://localhost:1337']
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://localhost:1337",
+    "http://127.0.0.1:1337",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+    "http://localhost:1337",
+    "http://127.0.0.1:1337",
+    ]
 
 
 # Application definition
