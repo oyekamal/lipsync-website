@@ -3,6 +3,8 @@ from django.forms import ModelForm
 from django.contrib.auth.models import User
 from applipsync.models import File, Mouth
 from django import forms
+from django.db.models import Q
+
 
 class UserForm(ModelForm):
     class Meta:
@@ -12,7 +14,7 @@ class UserForm(ModelForm):
 class FileUploadForm(ModelForm):
     def __init__(self, user, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['mouth'].queryset=Mouth.objects.filter(user=user)
+        self.fields['mouth'].queryset=Mouth.objects.filter(Q(user=user) | Q(user__username='admin'))
     class Meta:
         model = File
         # fields = ('__all__')
