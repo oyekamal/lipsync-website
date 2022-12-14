@@ -24,7 +24,12 @@ class FileUploadForm(ModelForm):
         fields = ("audio", "script", "name", "host", "mouth", "user")
         widgets = {"host": forms.HiddenInput(), "user": forms.HiddenInput()}
 
-
+class FileUploadFormCreate(ModelForm):
+    class Meta:
+        model = File
+        # fields = ('__all__')
+        fields = ("audio", "script", "name", "host", "mouth", "user")
+        widgets = {"host": forms.HiddenInput(), "user": forms.HiddenInput()}
 class MouthForm(ModelForm):
     class Meta:
         model = Mouth

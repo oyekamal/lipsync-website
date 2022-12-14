@@ -1,7 +1,7 @@
 from applipsync.models import File, GentleJson, Video, VideoFrame
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import FileUploadForm, MouthForm, UserForm
+from .forms import FileUploadForm, MouthForm, UserForm, FileUploadFormCreate
 
 # Create your views here.
 
@@ -49,10 +49,10 @@ def Fileuploadrederer(request):
                 request_data = request.POST.copy()
                 request_file = request.FILES.copy()
                 request_data["host"] = f"{request.scheme}://{request.META['HTTP_HOST']}"
-                request_data["user"] = request.user
+                request_data["user"] = request.user.id
                 print("reqeust after", request_data)
                 print("reqeust after", request_file)
-                form = FileUploadForm(request_data, request_file)
+                form = FileUploadFormCreate(request_data, request_file)
 
                 if form.is_valid():
                     form.save()
@@ -67,6 +67,7 @@ def Fileuploadrederer(request):
             except Exception as e:
                 print("Exception......")
                 print(e)
+                return redirect('/')
             return render(request, "store/upload.html", {"form": form})
 
 
