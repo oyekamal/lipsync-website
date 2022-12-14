@@ -174,18 +174,32 @@ USE_TZ = True
 
 
 # settings.py example
+# Q_CLUSTER = {
+#     "name": "myproject",
+#     "workers": 1,
+#     "recycle": 500,
+#     "timeout": 240,
+#     "retry": 240,
+#     "compress": True,
+#     "save_limit": 250,
+#     "queue_limit": 500,
+#     "cpu_affinity": 1,
+#     "label": "Django Q",
+#     "redis":  "redis://redis/"
+# }
 Q_CLUSTER = {
-    "name": "myproject",
-    "workers": 1,
-    "recycle": 500,
-    "timeout": 240,
-    "retry": 240,
-    "compress": True,
-    "save_limit": 250,
-    "queue_limit": 500,
-    "cpu_affinity": 1,
-    "label": "Django Q",
-    "redis":  "redis://redis/"
+    'name': 'pdm',
+    'workers': 1,
+    'recycle': 500,
+    'timeout': 60,
+    'retry': 120,
+    'compress': True,
+    'save_limit': 250,
+    'queue_limit': 500,
+    'cpu_affinity': 1,
+    'label': 'Django Q',
+    'daemonize_workers': False,
+    'orm': 'default',
 }
 
 # Static files (CSS, JavaScript, Images)

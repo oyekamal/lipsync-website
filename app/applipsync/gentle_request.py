@@ -70,9 +70,9 @@ def gentle_json(data):
             print("Was a nice sleep, now let me continue...")
             continue
 
-    json_saving_path = path + "/media/json/"
-    with open(json_saving_path + "{}.json".format(audio_name), "w") as outfile:
-        outfile.write(gentle_data)
+    # json_saving_path = path + "/media/json/"
+    # with open(json_saving_path + "{}.json".format(audio_name), "w") as outfile:
+    #     outfile.write(gentle_data)
 
     data["gentle_data"] = json.loads(gentle_data)
     data["base"] = basepath

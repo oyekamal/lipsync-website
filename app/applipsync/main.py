@@ -7,10 +7,10 @@ import requests
 url = "http://localhost:49153/transcriptions?async=false"
 
 audio_path = (
-    "C:/Users/cacf/Documents/website_work/lipsync/media/audio/software4_EhiBUIG.wav"
+    "./software4.wav"
 )
 transcript_path = (
-    "C:/Users/cacf/Documents/website_work/lipsync/media/script/software4_batIAza.txt"
+    "./software4.txt"
 )
 
 # audio_path = audio_path.replace('\\', '/')
@@ -32,7 +32,7 @@ response = requests.request("POST", url, headers=headers, data=payload, files=fi
 
 gentle_data = response.text
 
-path = "C:/Users/cacf/Documents/website_work/lipsync/media/json"
+path = "."
 with open(path + "/sample.json", "w") as outfile:
     outfile.write(gentle_data)
 # # parse x:
