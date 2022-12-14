@@ -57,9 +57,9 @@ def updatePath(sender, instance, created, **kwargs):
     # '/media/cars/chevy_ii.jpg'
     # >>> car.photo.path == new_path
     if created:
-        print("creating folder")
+        # print("creating folder")
         folder_name = instance.title
-        print("creating folder " + folder_name)
+        # print("creating folder " + folder_name)
         media_path = settings.MEDIA_ROOT
         path = media_path + "/images/" + folder_name
         print("path  ", path)
