@@ -73,6 +73,9 @@ def Fileuploadrederer(request):
 def use(request):
     return render(request, "store/use.html")
 
+def error_404_view(request, exception=None):
+    return render(request, 'store/404.html')
+
 def Mouthrederer(request):
     if not request.user.is_authenticated:
         return redirect("/")
