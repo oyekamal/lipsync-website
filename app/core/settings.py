@@ -1,6 +1,6 @@
 
 
-local = False
+local = True
 
 if local:
     from .local_settings import *

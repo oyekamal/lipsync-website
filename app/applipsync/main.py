@@ -4,7 +4,7 @@ import requests
 
 # from utils import add_gentle_phonemes, framer_reader, frame_creater, add_normal_phonemes
 # from frametoVideo import  convert_frames_to_video_function
-url = "http://localhost:49153/transcriptions?async=false"
+url = "http://gentle/transcriptions?async=false"
 
 audio_path = (
     "./software4.wav"

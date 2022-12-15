@@ -70,6 +70,8 @@ def Fileuploadrederer(request):
                 return redirect('/')
             return render(request, "store/upload.html", {"form": form})
 
+def use(request):
+    return render(request, "store/use.html")
 
 def Mouthrederer(request):
     if not request.user.is_authenticated:
