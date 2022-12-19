@@ -6,6 +6,9 @@
 
 {% block content %}
 
+{% load static %}
+<script src="{% static 'js/getCall.js' %}"></script>
+
 {% if video %}
 <div class="jumbotron">
     <h1 class="display-4">Ready!</h1>
@@ -48,8 +51,7 @@
     {% endif %}
 
 
-<!-- {% load static %} -->
-<!-- <script src="{% static 'js/get.js' %}"></script> -->
+
 
 {% endblock %}
 
