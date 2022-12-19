@@ -1,7 +1,7 @@
-from applipsync.models import File, GentleJson, Video, VideoFrame
+from applipsync.models import File, GentleJson, Video, VideoFrame, Question
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import FileUploadForm, MouthForm, UserForm, FileUploadFormCreate
+from .forms import FileUploadForm, MouthForm, UserForm, FileUploadFormCreate, QuestionForm
 
 # Create your views here.
 
@@ -101,6 +101,30 @@ def Mouthrederer(request):
             except Exception as e:
                 print(e)
             return render(request, "store/mouth.html", {"form": form})
+
+def Questionrederer(request):
+
+    if request.method == "GET":
+        form = QuestionForm
+        mydict = {
+            "form": form,
+        }
+        return render(request, "store/question.html", context=mydict)
+    else:
+        try:
+            request_data = request.POST.copy()
+            request_file = request.FILES.copy()
+            form = QuestionForm(request_data, request_file)
+            if form.is_valid():
+                form.save()
+                return render(
+                    request, "store/question.html", {"form": form, "success": True}
+                )
+            else:
+                print(form.errors)
+        except Exception as e:
+            print(e)
+        return render(request, "store/question.html", {"form": form})
 
 
 def list_of_files(request):
