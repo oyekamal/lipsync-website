@@ -61,7 +61,7 @@
 
 <!-- details page -->
 <div class="d-flex justify-content-center w-100">
-  <div class="w-75">
+  <div class="w-75 p-5 shadow rounded">
   {% block content %}
   {% endblock %}
 </div>
@@ -78,11 +78,11 @@
           <!-- <li class="list-inline-item"><a href="search.html">Search</a></li> -->
         </ul>
       </div>
-      <!-- <div class="col-lg-4 text-center mb-4 mb-lg-0">
-        <a class="navbar-brand" href="index.html">
-          <img class="img-fluid" src="images/logo.png" alt="Hugo documentation theme">
+      <div class="col-lg-4 text-center mb-4 mb-lg-0">
+        <a class="navbar-brand" href="/">
+          <img class="img-fluid" src="{% static 'images/logo.png' %}" alt="Hugo documentation theme">
         </a>
-      </div> -->
+      </div>
       <div class="col-lg-4">
         <ul class="list-inline social-icons text-lg-right text-center">
           <!-- <li class="list-inline-item"><a href="#"><i class="ti-facebook"></i></a></li>
@@ -108,7 +108,7 @@
 <script src="{% static 'js/plugins/match-height/jquery.matchHeight-min.js' %}"></script>
 
 <!-- Main Script -->
-<script src="js/script.js"></script>
+<!-- <script src="{% static 'js/script.js' %}"></script> -->
 
 </body>
 </html>
