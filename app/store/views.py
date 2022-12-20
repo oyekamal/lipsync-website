@@ -88,7 +88,10 @@ def Mouthrederer(request):
             return render(request, "store/mouth.html", context=mydict)
         else:
             try:
+                request.POST._mutable = True
+                
                 request_data = request.POST.copy()
+                request_data["user"] = request.user.id
                 request_file = request.FILES.copy()
                 form = MouthForm(request_data, request_file)
                 if form.is_valid():

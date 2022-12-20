@@ -39,5 +39,6 @@ class MouthForm(ModelForm):
     class Meta:
         model = Mouth
         fields = "__all__"
+        widgets = {"host": forms.HiddenInput(), "user": forms.HiddenInput()}
         # fields = ('audio', 'script', 'name', 'host', 'mouth')
         # widgets = {'host': forms.HiddenInput()}
