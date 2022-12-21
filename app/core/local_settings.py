@@ -172,6 +172,9 @@ Q_CLUSTER = {
 
 STATIC_URL = 'static/'
 
+print("path-------")
+print(BASE_DIR)
+print("----")
 if DEBUG:
     STATICFILES_DIRS = [
         os.path.join(BASE_DIR, 'static')
