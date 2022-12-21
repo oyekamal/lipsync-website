@@ -34,6 +34,7 @@ apt install libgl1-mesa-glx
 
 sudo apt-get install gcc
 
+sudo apt install nginx
 
 gunicorn --workers 3 --bind 0.0.0.0:8000 core.wsgi:application
 
