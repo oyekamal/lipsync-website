@@ -172,13 +172,13 @@ Q_CLUSTER = {
 
 # settings.py
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 if DEBUG:
     STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
     )
 else:
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
