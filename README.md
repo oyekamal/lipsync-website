@@ -26,6 +26,15 @@ deployment
 
 apt install libgl1-mesa-glx
 
+sudo apt update
+
+sudo apt-get install python3.10 python3.10-dev python3.10-distutils python3.10-venv
+
+apt install libgl1-mesa-glx
+
+sudo apt-get install gcc
+
+
 gunicorn --workers 3 --bind 0.0.0.0:8000 core.wsgi:application
 
 nano /etc/nginx/sites-available/lipsync
