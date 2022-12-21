@@ -171,19 +171,13 @@ Q_CLUSTER = {
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = (
+   os.path.join(BASE_DIR, 'static'),
+)
 
-print("path-------")
-print(BASE_DIR)
-print("----")
-if DEBUG:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static')
-    ]
-else:
-    # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    STATIC_ROOT = '/home/ubuntu/lipsync-website/app/static'
-
-
+# PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
