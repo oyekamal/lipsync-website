@@ -23,7 +23,7 @@ python -m black .
 
 flake8 --ignore=E501,F401 .
 
-
+apt install libgl1-mesa-glx
 
 
 setup docker
