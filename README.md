@@ -22,9 +22,18 @@ isort .
 python -m black .
 
 flake8 --ignore=E501,F401 .
+deployment
 
 apt install libgl1-mesa-glx
 
+gunicorn --workers 3 --bind 0.0.0.0:8000 core.wsgi:application
+
+nano /etc/nginx/sites-available/lipsync
+
+sudo ln -s /etc/nginx/sites-available/lipsync /etc/nginx/sites-enabled
+
+
+gunicorn --workers 3 --bind unix:/home/ubuntu/lipsync-website/app/core.sock core.wsgi:application
 
 setup docker
 
