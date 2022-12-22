@@ -25,6 +25,18 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['3.83.176.152']
 
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "http://3.83.176.152",
+]
+CSRF_TRUSTED_ORIGINS = [
+    "http://3.83.176.152",
+    ]
 
 # Application definition
 
@@ -173,6 +185,12 @@ Q_CLUSTER = {
 STATIC_URL = "static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+
+
+print("BASE_DIR ",BASE_DIR)
+print("------------------------------------------")
+print(STATIC_ROOT)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
