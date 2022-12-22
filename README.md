@@ -45,6 +45,10 @@ sudo ln -s /etc/nginx/sites-available/lipsync /etc/nginx/sites-enabled
 
 gunicorn --workers 3 --bind unix:/home/ubuntu/lipsync-website/app/core.sock core.wsgi:application
 
+sudo systemctl reload nginx
+
+sudo systemctl restart nginx
+
 setup docker
 
 docker-compose build 
