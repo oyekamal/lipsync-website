@@ -23,7 +23,7 @@ SECRET_KEY = 'django-insecure-n+a9zzg9jw+#2h$1hfr74)%u4g@+sb+j1m&y7oqp^^g8auitwh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['3.87.219.171']
+ALLOWED_HOSTS = ['3.83.176.152']
 
 
 # Application definition
@@ -151,20 +151,18 @@ USE_TZ = True
 
 # settings.py example
 Q_CLUSTER = {
-    'name': 'myproject',
+    'name': 'pdm',
     'workers': 1,
     'recycle': 500,
-    'timeout': 240,
-    'retry': 240,
+    'timeout': 60,
+    'retry': 120,
     'compress': True,
     'save_limit': 250,
     'queue_limit': 500,
     'cpu_affinity': 1,
     'label': 'Django Q',
-    'redis': {
-        'host': 'localhost',
-        'port': 6379,
-        'db': 0, }
+    'daemonize_workers': False,
+    'orm': 'default',
 }
 
 # Static files (CSS, JavaScript, Images)
