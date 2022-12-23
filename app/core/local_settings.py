@@ -182,10 +182,11 @@ Q_CLUSTER = {
 
 # settings.py
 
-STATIC_URL = "static/"
-# STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-STATIC_ROOT = 'static'
-
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, '/static/'),
+]
 
 
 print("BASE_DIR ",BASE_DIR)
