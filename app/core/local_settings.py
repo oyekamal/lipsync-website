@@ -31,10 +31,10 @@ CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True
 
 CORS_ALLOWED_ORIGINS = [
-    "http://3.83.176.152",
+    "http://54.234.143.251",
 ]
 CSRF_TRUSTED_ORIGINS = [
-    "http://3.83.176.152",
+    "http://54.234.143.251",
 ]
 
 # Application definition
