@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     # app
+    
     "applipsync",
     "store",
     # packages
+    "whitenoise.runserver_nostatic",
     "rest_framework",
     "django_q",
     "allauth",
@@ -61,6 +63,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware", #add whitenoise
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -181,8 +184,7 @@ STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 # PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') ##specify static root
 
 print("BASE_DIR ", BASE_DIR)
 print("------------------------------------------")
