@@ -1,7 +1,14 @@
-from applipsync.models import File, GentleJson, Video, VideoFrame, Question
 from django.shortcuts import get_object_or_404, redirect, render
 
-from .forms import FileUploadForm, MouthForm, UserForm, FileUploadFormCreate, QuestionForm
+from applipsync.models import File, GentleJson, Question, Video, VideoFrame
+
+from .forms import (
+    FileUploadForm,
+    FileUploadFormCreate,
+    MouthForm,
+    QuestionForm,
+    UserForm,
+)
 
 # Create your views here.
 
@@ -67,14 +74,17 @@ def Fileuploadrederer(request):
             except Exception as e:
                 print("Exception......")
                 print(e)
-                return redirect('/')
+                return redirect("/")
             return render(request, "store/upload.html", {"form": form})
+
 
 def use(request):
     return render(request, "store/use.html")
 
+
 def error_404_view(request, exception=None):
-    return render(request, 'store/404.html')
+    return render(request, "store/404.html")
+
 
 def Mouthrederer(request):
     if not request.user.is_authenticated:
@@ -89,7 +99,7 @@ def Mouthrederer(request):
         else:
             try:
                 request.POST._mutable = True
-                
+
                 request_data = request.POST.copy()
                 request_data["user"] = request.user.id
                 request_file = request.FILES.copy()
@@ -104,6 +114,7 @@ def Mouthrederer(request):
             except Exception as e:
                 print(e)
             return render(request, "store/mouth.html", {"form": form})
+
 
 def Questionrederer(request):
 

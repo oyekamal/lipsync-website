@@ -53,7 +53,7 @@ CSRF_TRUSTED_ORIGINS = [
     "http://127.0.0.1:8000",
     "http://localhost:1337",
     "http://127.0.0.1:1337",
-    ]
+]
 
 
 # Application definition
@@ -188,18 +188,18 @@ USE_TZ = True
 #     "redis":  "redis://redis/"
 # }
 Q_CLUSTER = {
-    'name': 'pdm',
-    'workers': 1,
-    'recycle': 500,
-    'timeout': 60,
-    'retry': 120,
-    'compress': True,
-    'save_limit': 250,
-    'queue_limit': 500,
-    'cpu_affinity': 1,
-    'label': 'Django Q',
-    'daemonize_workers': False,
-    'orm': 'default',
+    "name": "pdm",
+    "workers": 1,
+    "recycle": 500,
+    "timeout": 60,
+    "retry": 120,
+    "compress": True,
+    "save_limit": 250,
+    "queue_limit": 500,
+    "cpu_affinity": 1,
+    "label": "Django Q",
+    "daemonize_workers": False,
+    "orm": "default",
 }
 
 # Static files (CSS, JavaScript, Images)

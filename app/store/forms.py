@@ -1,8 +1,9 @@
-from applipsync.models import File, Mouth, Question
 from django import forms
 from django.contrib.auth.models import User
 from django.db.models import Q
 from django.forms import ModelForm
+
+from applipsync.models import File, Mouth, Question
 
 
 class UserForm(ModelForm):
@@ -10,10 +11,11 @@ class UserForm(ModelForm):
         model = User
         fields = ("username", "password", "first_name", "last_name", "email")
 
+
 class QuestionForm(ModelForm):
     class Meta:
         model = Question
-        fields = '__all__'
+        fields = "__all__"
 
 
 class FileUploadForm(ModelForm):
@@ -29,12 +31,15 @@ class FileUploadForm(ModelForm):
         fields = ("audio", "script", "name", "host", "mouth", "user")
         widgets = {"host": forms.HiddenInput(), "user": forms.HiddenInput()}
 
+
 class FileUploadFormCreate(ModelForm):
     class Meta:
         model = File
         # fields = ('__all__')
         fields = ("audio", "script", "name", "host", "mouth", "user")
         widgets = {"host": forms.HiddenInput(), "user": forms.HiddenInput()}
+
+
 class MouthForm(ModelForm):
     class Meta:
         model = Mouth

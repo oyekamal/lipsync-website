@@ -9,4 +9,3 @@ admin.site.register(VideoFrame)
 admin.site.register(Video)
 admin.site.register(Mouth)
 admin.site.register(Question)
-

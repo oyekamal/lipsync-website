@@ -2,9 +2,10 @@ import json
 import math
 import os
 
-from common.constants import NORMAL_PHONEMES
 from g2p_en import G2p
 from PIL import Image
+
+from common.constants import NORMAL_PHONEMES
 
 from .imageutils import adding_image
 

@@ -6,12 +6,8 @@ import requests
 # from frametoVideo import  convert_frames_to_video_function
 url = "http://gentle/transcriptions?async=false"
 
-audio_path = (
-    "./software4.wav"
-)
-transcript_path = (
-    "./software4.txt"
-)
+audio_path = "./software4.wav"
+transcript_path = "./software4.txt"
 
 # audio_path = audio_path.replace('\\', '/')
 # transcript_path = transcript_path.replace('\\', '/')

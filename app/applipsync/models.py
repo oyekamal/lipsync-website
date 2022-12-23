@@ -131,6 +131,7 @@ class Video(models.Model):
     def __str__(self):
         return self.video_frame.gentle_josn.file.name
 
+
 class Question(models.Model):
     name = models.CharField(max_length=200)
     email = models.EmailField(max_length=255)
