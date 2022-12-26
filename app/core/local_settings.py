@@ -22,20 +22,20 @@ SECRET_KEY = "django-insecure-n+a9zzg9jw+#2h$1hfr74)%u4g@+sb+j1m&y7oqp^^g8auitwh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*","18.212.187.176"]
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
-CORS_ALLOW_CREDENTIALS = True
+# CORS_ALLOW_CREDENTIALS = True
 
-CORS_ALLOWED_ORIGINS = [
-    "http://54.234.143.251",
-]
-CSRF_TRUSTED_ORIGINS = [
-    "http://54.234.143.251",
-]
+# CORS_ALLOWED_ORIGINS = [
+#     "http://54.234.143.251",
+# ]
+# CSRF_TRUSTED_ORIGINS = [
+#     "http://54.234.143.251",
+# ]
 
 # Application definition
 
@@ -179,12 +179,12 @@ Q_CLUSTER = {
 
 # settings.py
 
-STATIC_URL = "static/"
+STATIC_URL = "/static/"
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 
 # PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') ##specify static root
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/') ##specify static root
 
 print("BASE_DIR ", BASE_DIR)
 print("------------------------------------------")
@@ -200,3 +200,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), "templates").replace("\\", "/"),
 )
+y
