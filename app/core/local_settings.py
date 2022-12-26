@@ -200,4 +200,3 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 TEMPLATE_DIRS = (
     os.path.join(os.path.dirname(__file__), "templates").replace("\\", "/"),
 )
-y
