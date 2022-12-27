@@ -24,9 +24,9 @@ urlpatterns = [
     path("api/", include("applipsync.urls")),
     path("", include("store.urls")),
     path("accounts/", include("allauth.urls")),
-    path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
-    path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
-]
+#     path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
+#     path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
+# ]
 
 handler404 = "store.views.error_404_view"
 handler404 = "store.views.error_404_view"
