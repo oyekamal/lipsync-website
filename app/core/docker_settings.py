@@ -42,8 +42,8 @@ CORS_ALLOW_CREDENTIALS = True
 
 # CSRF_TRUSTED_ORIGINS = ['http://localhost:8000','http://localhost:1337']
 
-CORS_ALLOWED_ORIGINS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
-CSRF_TRUSTED_ORIGINS = os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")
+CORS_ALLOWED_ORIGINS = ["http://"+i for i in  os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")] 
+CSRF_TRUSTED_ORIGINS = ["http://"+i for i in  os.environ.get("DJANGO_ALLOWED_HOSTS").split(" ")] 
 
 
 # Application definition
