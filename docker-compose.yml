@@ -6,7 +6,7 @@ services:
       context: ./app
       dockerfile: Dockerfile.prod
     # command: gunicorn core.wsgi:application --bind 0.0.0.0:8000
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
     volumes:
       - static_volume:/usr/src/app/staticfiles
       - media_volume:/usr/src/app/media
@@ -26,15 +26,15 @@ services:
     env_file:
       - ./.env.prod.db
 
-  # nginx:
-  #   build: ./nginx
-  #   volumes:
-  #     - static_volume:/usr/src/app/staticfiles
-  #     - media_volume:/usr/src/app/media
-  #   ports:
-  #     - 1337:80
-  #   depends_on:
-  #     - web
+  nginx:
+    build: ./nginx
+    volumes:
+      - static_volume:/usr/src/app/staticfiles
+      - media_volume:/usr/src/app/media
+    ports:
+      - 80:80
+    depends_on:
+      - web
 
   redis:
     image: redis
