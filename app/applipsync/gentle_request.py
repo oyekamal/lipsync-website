@@ -8,7 +8,7 @@ import requests
 
 # from utils import add_gentle_phonemes, framer_reader, frame_creater, add_normal_phonemes
 # from frametoVideo import  convert_frames_to_video_function
-url = "http://localhost:49153/transcriptions?async=false"
+url = "http://gentle:8765/transcriptions?async=false"
 
 
 def gentle_json(data):
@@ -18,7 +18,7 @@ def gentle_json(data):
     #         'base': basepath,
     #         'file_id':serializer.data.get('id')
     #     }
-    url = "http://localhost:49153/transcriptions?async=false"
+    url = "http://gentle:8765/transcriptions?async=false"
 
     # basepath = settings.BASE_DIR
     basepath = data.get("base")
