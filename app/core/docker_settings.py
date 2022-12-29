@@ -53,7 +53,11 @@ CORS_ALLOWED_ORIGINS = [
     "http://147.182.169.215",
     "https://147.182.169.215"
 ] 
+CORS_ORIGIN_WHITELIST = [
+        "http://147.182.169.215",
+       "https://147.182.169.215",
 
+]
 
 # Application definition
 
@@ -68,6 +72,7 @@ INSTALLED_APPS = [
     "applipsync",
     "store",
     # packages
+    "corsheaders",
     "rest_framework",
     "django_q",
     "allauth",
@@ -79,6 +84,7 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
