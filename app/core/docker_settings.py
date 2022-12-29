@@ -48,18 +48,23 @@ SECURE_CROSS_ORIGIN_OPENER_POLICY = None
 CSRF_TRUSTED_ORIGINS = [
     "http://147.182.169.215",
     "https://147.182.169.215"
+    "http://mouthlipsync.com",
+    "https://mouthlipsync.com",
 ]
 
 CORS_ALLOWED_ORIGINS = [
     "http://147.182.169.215",
     "https://147.182.169.215",
     "http://localhost:8000",
-    "http://127.0.0.1:8000"
+    "http://127.0.0.1:8000",
+    "http://mouthlipsync.com",
+    "https://mouthlipsync.com",
 ] 
 CORS_ORIGIN_WHITELIST = [
-        "http://147.182.169.215",
-       "https://147.182.169.215",
-
+    "http://147.182.169.215",
+    "https://147.182.169.215",
+     "http://mouthlipsync.com",
+    "https://mouthlipsync.com",
 ]
 
 # Application definition
