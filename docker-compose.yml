@@ -33,8 +33,10 @@ services:
       - media_volume:/usr/src/app/media
     ports:
       - 80:80
+      - 443:443
     depends_on:
       - web
+    restart: always
 
   # redis:
   #   image: redis
