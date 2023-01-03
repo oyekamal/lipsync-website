@@ -81,6 +81,8 @@ def Fileuploadrederer(request):
 def use(request):
     return render(request, "store/use.html")
 
+def Aboutrederer(request):
+    return render(request, "store/about.html")
 
 def error_404_view(request, exception=None):
     return render(request, "store/404.html")
