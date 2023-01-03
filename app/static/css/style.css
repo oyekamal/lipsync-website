@@ -93,6 +93,14 @@ h6, .h6 {
   font-size: 18px;
 }
 
+.product {
+  position: relative;
+  overflow: visible;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center top;
+}
+
 /* Button style */
 .btn {
   font-size: 16px;
