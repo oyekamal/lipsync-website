@@ -187,3 +187,16 @@ def video_details(request, slug):
         }
 
         return render(request, "store/video_details.html", context=data)
+
+def mouth_details(request, slug):
+    print("Mouth Details")
+    if not request.user.is_authenticated:
+        return redirect("/")
+    else:
+        mouth = get_object_or_404(Mouth, title=slug)
+
+        data = {
+            "mouth": mouth,
+        }
+
+        return render(request, "store/mouth_details.html", context=data)

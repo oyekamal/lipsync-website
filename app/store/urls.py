@@ -13,6 +13,7 @@ urlpatterns = [
     path("list_of_mouth/", views.list_of_mouth, name="list_of_mouth"),
     path("use/", views.use, name="use"),
     path("video_details/<slug:slug>/", views.video_details, name="video_details"),
+    path("mouth_details/<slug:slug>/", views.mouth_details, name="mouth_details"),
     path("question/", views.Questionrederer, name="question"),
     path("about/", views.Aboutrederer, name="about"),
 ]

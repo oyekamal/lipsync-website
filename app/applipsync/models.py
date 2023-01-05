@@ -77,7 +77,7 @@ class Mouth(models.Model):
 
     def get_absolute_url(self):
         return reverse("store:mouth_details", args=[self.title])
-
+        
 class File(models.Model):
     audio = models.FileField(
         blank=False,

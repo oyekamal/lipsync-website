@@ -20,7 +20,7 @@
     <div class="list-group p-4 ">
         {% for mouth in mouths %}
         <div class="p-2">
-            <a href="{{ file.get_absolute_url }}" class="list-group-item list-group-item-action"> {{mouth.title}} </a>
+            <a href="{{ mouth.get_absolute_url }}" class="list-group-item list-group-item-action"> {{mouth.title}} </a>
         </div>
         
         {% endfor %}
