@@ -1,0 +1,30 @@
+
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %} Files {% endblock %}
+
+{% block content %}
+
+<!-- 
+    {% for file in files %}
+    <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">{{file.name}}</h5>
+          <p class="card-text"> created at {{file.created_at}}</p>
+          <a href="{{ file.get_absolute_url }}" class="btn btn-primary">Details</a>
+        </div>
+      </div>
+    {% endfor %} -->
+    <h1>List of mouths</h1>
+    <div class="list-group p-4 ">
+        {% for mouth in mouths %}
+        <div class="p-2">
+            <a href="{{ file.get_absolute_url }}" class="list-group-item list-group-item-action"> {{mouth.title}} </a>
+        </div>
+        
+        {% endfor %}
+    </div>
+
+{% endblock %}
+

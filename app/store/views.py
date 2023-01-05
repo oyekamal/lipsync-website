@@ -1,6 +1,8 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
-from applipsync.models import File, GentleJson, Question, Video, VideoFrame
+from applipsync.models import File, GentleJson, Question, Video, VideoFrame, Mouth
+from django.db.models import Q
+
 
 from .forms import (
     FileUploadForm,
@@ -144,7 +146,7 @@ def Questionrederer(request):
 
 
 def list_of_files(request):
-    files = File.objects.all()
+    # files = File.objects.all()
     # context = {'data', data}
     if not request.user.is_authenticated:
         return redirect("/")
@@ -152,6 +154,14 @@ def list_of_files(request):
         files = File.objects.filter(user=request.user)
         return render(request, "store/list_of_files.html", context={"files": files})
 
+def list_of_mouth(request):
+    if not request.user.is_authenticated:
+        return redirect("/")
+    else:
+        mouths = Mouth.objects.filter(
+            Q(user=request.user) | Q(user__username="admin")
+        )
+        return render(request, "store/list_of_mouth.html", context={"mouths": mouths})
 
 def video_details(request, slug):
     if not request.user.is_authenticated:
