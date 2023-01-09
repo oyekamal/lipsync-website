@@ -12,18 +12,18 @@
 {% if video %}
 <div class="jumbotron">
     <h1 class="display-4">Ready!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p class="lead">By clicking the button below, you may download the results of your lipsync request.</p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>Only the next 72 hours will this link be active. It will thereafter be removed from our server.</p>
     <a class="btn btn-primary btn-lg" href="{{ video.video }}" target="_blank" role="button">Download</a>
 
 </div>
 {% else %}
 <div class="jumbotron">
     <h1 class="display-4">Pending!</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p class="lead">Your request to create a lip sync animation is currently in que. Depending on how many requests are waiting in line, this procedure might take anywhere between 3 and 5 minutes. </p>
     <hr class="my-4">
-    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <p>You must only use English words or else this tool won't function correctly.</p>
     <!-- <a class="btn btn-lg" href={{video.video}} role="button">N</a> -->
 </div>
 {% endif %}
