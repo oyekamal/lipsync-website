@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800&display=swap");
 @import url('https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600;700&display=swap');
 
-:root {
+/* :root {
   --color-body: #f6f6f6;
   --color-body2: #8c8b8b;
   --color-heading: #eef3db;
@@ -11,6 +11,34 @@
   --color-brand: #de3902;
   --color-brand2: #da7e05;
   --color-brand3: #f8b76d;
+  --font-base: "Bai Jamjuree";
+} */
+
+/* :root {
+  --color-body: #fff8f2ea;
+  --color-body2: #A7BBC7;
+  --color-heading: #faefdae4;
+  --color-base: #1d2535;
+  --color-base2: #555273; 
+  --color-brand: rgb(76, 100, 151);
+  --color-brand2: #E23E57;
+  --color-brand3: #de98a3;
+  --font-base: "Bai Jamjuree";
+} */
+
+:root {
+  /* background */
+  --color-body: #f1f6ff;
+  --color-body2: #ababaf;
+  --color-heading: #fefefe;
+  /* background  ^*/
+  /* text  */
+  --color-base: #272020;
+  --color-base2: #212121;  
+  /*  text ^ */
+  --color-brand: #72147E;
+  --color-brand2: #F21170;
+  --color-brand3: #e28b6b;
   --font-base: "Bai Jamjuree";
 }
 
