@@ -32,16 +32,14 @@
         <div class="row py-lg-3">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-light">Automate Lipsync</h1>
-                <p class="lead text-muted">Auto Lipsync gives you the ability to automate the animation 
-                  of your 2D lips by utilizing either our pre-furnished mouth styles or your own mouth asset. 
-                  This tool allows you to make mouth movements that are synchronized with your audio,
-                   and it will produce a downloadable file of mouth motions on a green backdrop. </p>
+                <p class="lead">
+                  Mouth Lipsync tool create 2d mouth Lipsync video with green background using your audio(English) and text script.</p>
                 {% if user.is_authenticated %}
                 <p>
                     <a href="/upload/" class="btn btn-primary my-2">Lipsync</a>
-                    <a href="/mouth/" action="" class="btn btn-secondary my-2">Upload Mouth</a>
+                    {% comment %} <a href="/mouth/" action="" class="btn btn-secondary my-2">Upload Mouth</a>
                     <a href="/list_of_mouth/" action="" class="btn btn-secondary my-2">View Mouths</a>
-                    <a href="/files/" action="" class="btn btn btn-secondary my-2">Your Mouth videos</a>
+                    <a href="/files/" action="" class="btn btn btn-secondary my-2">Your Mouth videos</a> {% endcomment %}
                 </p>
                 {% else %}
                 <p>
@@ -57,16 +55,17 @@
   <!-- topics -->
   <section class="section pb-0">
     <div class="container">
-      <h2 class="section-title">Browse Your Topics</h2>
+      <h2 class="section-title">Lipsync assets</h2>
       <div class="row">
+        {% if user.is_authenticated %}
         <!-- topic -->
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="card match-height">
             <div class="card-body">
-              <i class="card-icon ti-panel mb-4"></i>
-              <h3 class="card-title h4">Basic Startup</h3>
-              <p class="card-text">Cras at dolor eget urna varius faucibus tempus in elit dolor sit amet.</p>
-              <a href="list.html" class="stretched-link"></a>
+              <i class="card-icon ti-layers-alt mb-4"></i>
+              <h3 class="card-title h4">Mouth assests</h3>
+              <p class="card-text">List of avaiable 2d mouth phoneme assets.</p>
+              <a href="/list_of_mouth/" class="stretched-link"></a>
             </div>
           </div>
         </div>
@@ -74,10 +73,10 @@
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="card match-height">
             <div class="card-body">
-              <i class="card-icon ti-credit-card mb-4"></i>
-              <h3 class="card-title h4">Account Bill</h3>
-              <p class="card-text">Cras at dolor eget urna varius faucibus tempus in elit dolor sit amet.</p>
-              <a href="list.html" class="stretched-link"></a>
+              <i class="card-icon ti-upload mb-4"></i>
+              <h3 class="card-title h4">Upload Mouth</h3>
+              <p class="card-text">Add your own Mouth phoneme images.</p>
+              <a href="/mouth/" class="stretched-link"></a>
             </div>
           </div>
         </div>
@@ -85,10 +84,10 @@
         <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
           <div class="card match-height">
             <div class="card-body">
-              <i class="card-icon ti-package mb-4"></i>
-              <h3 class="card-title h4">Our Features</h3>
-              <p class="card-text">Cras at dolor eget urna varius faucibus tempus in elit dolor sit amet.</p>
-              <a href="list.html" class="stretched-link"></a>
+              <i class="card-icon ti-video-clapper mb-4"></i>
+              <h3 class="card-title h4">Your videos</h3>
+              <p class="card-text">Your mouth lipsync videos are avaiable here.</p>
+              <a href="/files/" class="stretched-link"></a>
             </div>
           </div>
         </div>
@@ -97,12 +96,25 @@
           <div class="card match-height">
             <div class="card-body">
               <i class="card-icon ti-settings mb-4"></i>
-              <h3 class="card-title h4">Theme Facility</h3>
-              <p class="card-text">Cras at dolor eget urna varius faucibus tempus in elit dolor sit amet.</p>
-              <a href="list.html" class="stretched-link"></a>
+              <h3 class="card-title h4">Lipsync</h3>
+              <p class="card-text">Create 2d mouth animation using audio(English) and text script.</p>
+              <a href="/upload/" class="stretched-link"></a>
+            </div>
+          </div>
+        
+        </div>
+        {% else %}
+        <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+          <div class="card match-height">
+            <div class="card-body">
+              <i class="card-icon ti-panel mb-4"></i>
+              <h3 class="card-title h4">Mouth assests</h3>
+              <p class="card-text">List of avaiable 2d mouth phoneme assets. (you can add your own assets too)</p>
+              <a href="/list_of_admin_mouth/" class="stretched-link"></a>
             </div>
           </div>
         </div>
+        {% endif %}
       </div>
     </div>
   </section>

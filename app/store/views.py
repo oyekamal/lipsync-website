@@ -162,6 +162,12 @@ def list_of_mouth(request):
             Q(user=request.user) | Q(user__username="admin")
         )
         return render(request, "store/list_of_mouth.html", context={"mouths": mouths})
+    
+def list_of_admin_mouth(request):
+    mouths = Mouth.objects.filter(Q(user__username="admin"))
+    return render(request, "store/list_of_mouth.html", context={"mouths": mouths})
+
+
 
 def video_details(request, slug):
     if not request.user.is_authenticated:
@@ -191,7 +197,11 @@ def video_details(request, slug):
 def mouth_details(request, slug):
     print("Mouth Details")
     if not request.user.is_authenticated:
-        return redirect("/")
+        mouth =Mouth.objects.get(user__username="admin",title=slug)
+        data = {
+            "mouth": mouth,
+        }
+        return render(request, "store/mouth_details.html", context=data)
     else:
         mouth = get_object_or_404(Mouth, title=slug)
 
