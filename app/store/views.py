@@ -197,11 +197,15 @@ def video_details(request, slug):
 def mouth_details(request, slug):
     print("Mouth Details")
     if not request.user.is_authenticated:
-        mouth =Mouth.objects.get(user__username="admin",title=slug)
-        data = {
-            "mouth": mouth,
-        }
-        return render(request, "store/mouth_details.html", context=data)
+        mouth =Mouth.objects.filter(user__username="admin",title=slug)
+        if mouth:
+            
+            data = {
+                "mouth": mouth[0],
+            }
+            return render(request, "store/mouth_details.html", context=data)
+        else:
+            return redirect("/")
     else:
         mouth = get_object_or_404(Mouth, title=slug)
 
