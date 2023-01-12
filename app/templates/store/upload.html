@@ -4,10 +4,12 @@
 {% block title %} Upload audio & text {% endblock %}
 
 {% block content %}
-
+{% load static %}
+<script src="{% static 'js/getCall.js' %}"></script>
 <main>
 
 <h1>Upload Audio and text script </h1>
+<h5>Please with for the file to be uploaded..!</h5>
 {% if success %}
 <div class="alert alert-success">
     <strong>Successfully!</strong> Uploaded.
@@ -16,11 +18,15 @@
     <div class="album py-5 bg-light">
         <div class="container">
 
-            <form action="" method='post'  autocomplete="off" enctype="multipart/form-data">
+            <form action="" method='post'  autocomplete="off" id="folder" enctype="multipart/form-data">
                 {% csrf_token %}
                 {{form|crispy}}
                 <button class="btn btn-success" type="submit" class="submit">submit</button>
             </form>
+            <!-- <div class="loder">
+                <img src="{% static 'images/loder.gif' %}" alt="loder" class="loder__gif">
+                <p class="loder__txt">Your file is being prepared...</p>
+            </div> -->
         </div>
     </div>
 

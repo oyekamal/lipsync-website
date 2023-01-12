@@ -11,6 +11,15 @@ function create(value = "function"){
   console.log("yes bro its working function");
 }
 
+const fileInput = document.querySelector('#folder');
+const loder = document.querySelector('.loder');
+const toggleLoder = function() {
+  loder.classList.add('active');
+  setTimeout(() => {
+    loder.classList.remove('active');
+  }, 10000);
+}
+fileInput.addEventListener('change',toggleLoder);
 
 function downloadFile(urlToSend) {
   var req = new XMLHttpRequest();
