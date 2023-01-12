@@ -15,7 +15,9 @@
     <p class="lead">By clicking the button below, you may download the results of your lipsync request.</p>
     <hr class="my-4">
     <p>Only the next 72 hours will this link be active. It will thereafter be removed from our server.</p>
-    <a class="btn btn-primary btn-lg" href="{{ video.video }}" target="_blank" role="button">Download</a>
+    <!-- <a class="btn btn-primary btn-lg" href="{{ video.video }}" target="_blank" role="button">Download</a> -->
+    <a class="btn btn-primary btn-lg" href="" onclick="downloadFile('{{video.video}}')" role="button">Download</a>
+
 
 </div>
 {% else %}
