@@ -19,7 +19,7 @@ def gentle_json(data):
     #         'file_id':serializer.data.get('id')
     #     }
     url = "http://gentle:8765/transcriptions?async=false"
-
+    # url = "http://localhost:49153/transcriptions?async=false"
     # basepath = settings.BASE_DIR
     basepath = data.get("base")
     script_file = data.get("script")
@@ -62,12 +62,13 @@ def gentle_json(data):
             )
             gentle_data = response.text
             break
-        except:
+        except Exception as e :
             print("Connection refused by the server..")
             print("Let me sleep for 5 seconds")
             print("ZZzzzz...")
             time.sleep(5)
             print("Was a nice sleep, now let me continue...")
+            print("exceptions : ",e)
             continue
 
     # json_saving_path = path + "/media/json/"

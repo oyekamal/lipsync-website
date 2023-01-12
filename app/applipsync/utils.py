@@ -37,43 +37,51 @@ def equalizer(diff, phonemes_frame):
 
 def add_normal_phonemes(gentle_data, FRAME_PER_SECOUND=24, EXTRA_TIME=0):
     print("adding normal phrases")
-    gentle_length = len(gentle_data["words"])
-    FRAME_PER_SECOUND = FRAME_PER_SECOUND
-    AUDO_END_TIME = gentle_data["words"][-1]["end"]
-    EXTRA_TIME = EXTRA_TIME
-    AUDO_END_TIME = math.ceil(float(AUDO_END_TIME) + EXTRA_TIME)
-    for counter in range(gentle_length):
-        each_data = gentle_data["words"][counter]
-        # "case": "success",
-        if each_data["case"] == "success":
-            each_data["init_frame"] = math.ceil(
-                float(each_data["start"]) * FRAME_PER_SECOUND
-            )
-            each_data["final_frame"] = math.ceil(
-                float(each_data["end"]) * FRAME_PER_SECOUND
-            )
+    if gentle_data.get("words"):
+        gentle_length = len(gentle_data["words"])
+        FRAME_PER_SECOUND = FRAME_PER_SECOUND
+        # AUDO_END_TIME = gentle_data["words"][-1]["end"]
+        AUDO_END_TIME = gentle_data["words"][-1].get("end")
+        print("AUDO_END_TIME :",AUDO_END_TIME)
+        counter = -1
+        while not AUDO_END_TIME:
+            print(AUDO_END_TIME)
+            counter -=  1
+            AUDO_END_TIME = gentle_data["words"][counter].get("end")
+        EXTRA_TIME = EXTRA_TIME
+        AUDO_END_TIME = math.ceil(float(AUDO_END_TIME) + EXTRA_TIME)
+        for counter in range(gentle_length):
+            each_data = gentle_data["words"][counter]
+            # "case": "success",
+            if each_data["case"] == "success":
+                each_data["init_frame"] = math.ceil(
+                    float(each_data["start"]) * FRAME_PER_SECOUND
+                )
+                each_data["final_frame"] = math.ceil(
+                    float(each_data["end"]) * FRAME_PER_SECOUND
+                )
 
-            each_data["diff"] = math.ceil(
-                (each_data["final_frame"] - each_data["init_frame"])
-            )
+                each_data["diff"] = math.ceil(
+                    (each_data["final_frame"] - each_data["init_frame"])
+                )
 
-            each_data["phonemes"] = g2p(each_data["word"])
-            print(each_data["phonemes"])
-            dic_ = {}
-            for each_phone in each_data["phonemes"]:
-                dic_[each_phone] = 0
-                each_data["phonemes_frame"] = dic_
-            each_data["phonemes_frame"] = equalizer(
-                each_data["diff"], each_data["phonemes_frame"]
-            )
-        else:
-            each_data["init_frame"] = -1
-            each_data["final_frame"] = -1
+                each_data["phonemes"] = g2p(each_data["word"])
+                print(each_data["phonemes"])
+                dic_ = {}
+                for each_phone in each_data["phonemes"]:
+                    dic_[each_phone] = 0
+                    each_data["phonemes_frame"] = dic_
+                each_data["phonemes_frame"] = equalizer(
+                    each_data["diff"], each_data["phonemes_frame"]
+                )
+            else:
+                each_data["init_frame"] = -1
+                each_data["final_frame"] = -1
 
-    gentle_data["FRAME_PER_SECOUND"] = FRAME_PER_SECOUND
-    gentle_data["AUDO_END_TIME"] = AUDO_END_TIME
-    gentle_data["TOTAL_VIDEO_FRAMES"] = AUDO_END_TIME * FRAME_PER_SECOUND + 1
-    gentle_data["MODE"] = "normal"
+        gentle_data["FRAME_PER_SECOUND"] = FRAME_PER_SECOUND
+        gentle_data["AUDO_END_TIME"] = AUDO_END_TIME
+        gentle_data["TOTAL_VIDEO_FRAMES"] = AUDO_END_TIME * FRAME_PER_SECOUND + 1
+        gentle_data["MODE"] = "normal"
 
     return gentle_data
 
