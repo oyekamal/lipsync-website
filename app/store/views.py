@@ -152,7 +152,7 @@ def list_of_files(request):
         return redirect("/")
     else:
         files = File.objects.filter(user=request.user)
-        return render(request, "store/list_of_files.html", context={"files": files})
+        return render(request, "store/list-of-files.html", context={"files": files})
 
 def list_of_mouth(request):
     if not request.user.is_authenticated:
@@ -161,11 +161,11 @@ def list_of_mouth(request):
         mouths = Mouth.objects.filter(
             Q(user=request.user) | Q(user__username="admin")
         )
-        return render(request, "store/list_of_mouth.html", context={"mouths": mouths})
+        return render(request, "store/list-of-mouth.html", context={"mouths": mouths})
     
 def list_of_admin_mouth(request):
     mouths = Mouth.objects.filter(Q(user__username="admin"))
-    return render(request, "store/list_of_mouth.html", context={"mouths": mouths})
+    return render(request, "store/list-of-mouth.html", context={"mouths": mouths})
 
 
 
@@ -192,7 +192,7 @@ def video_details(request, slug):
             "video": video,
         }
 
-        return render(request, "store/video_details.html", context=data)
+        return render(request, "store/video-details.html", context=data)
 
 def mouth_details(request, slug):
     print("Mouth Details")
@@ -203,7 +203,7 @@ def mouth_details(request, slug):
             data = {
                 "mouth": mouth[0],
             }
-            return render(request, "store/mouth_details.html", context=data)
+            return render(request, "store/mouth-details.html", context=data)
         else:
             return redirect("/")
     else:
@@ -213,4 +213,4 @@ def mouth_details(request, slug):
             "mouth": mouth,
         }
 
-        return render(request, "store/mouth_details.html", context=data)
+        return render(request, "store/mouth-details.html", context=data)
