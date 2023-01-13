@@ -102,14 +102,17 @@ WSGI_APPLICATION = "core.wsgi.application"
 ACCOUNT_EMAIL_REQUIRED = True
 
 # Make email verification mandatory to avoid junk email accounts
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
-
+# ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "optional"
+EMAIL_TIMEOUT = 5
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_USE_TLS = True
 EMAIL_PORT = 587
-EMAIL_HOST_USER = "kamal.umar0987@gmail.com"
+EMAIL_HOST_USER = DEFAULT_FROM_EMAIL ="kamal.umar0987@gmail.com"
 EMAIL_HOST_PASSWORD = "guhwrrcrmkxanuaz"
+EMAIL_SUBJECT_PREFIX = 'Mouthlipsync'
+
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
