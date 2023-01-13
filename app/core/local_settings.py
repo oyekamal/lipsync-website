@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     "allauth.account",
     "allauth.socialaccount",
     "crispy_forms",
+    "google_analytics"
 ]
 CRISPY_TEMPLATE_PACK = "bootstrap4"
 
@@ -90,6 +91,9 @@ TEMPLATES = [
     },
 ]
 
+GOOGLE_ANALYTICS = {
+    'google_analytics_id': 'G-FTMNR3S92M',
+}
 
 WSGI_APPLICATION = "core.wsgi.application"
 

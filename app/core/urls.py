@@ -24,6 +24,7 @@ urlpatterns = [
     path("api/", include("applipsync.urls")),
     path("", include("store.urls")),
     path("accounts/", include("allauth.urls")),
+    path('djga/', include('google_analytics.urls')),
 #     path(r'^media/(?P<path>.*)$', serve,{'document_root': settings.MEDIA_ROOT}), 
 #     path(r'^static/(?P<path>.*)$', serve,{'document_root': settings.STATIC_ROOT}), 
 ]
