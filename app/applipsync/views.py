@@ -79,8 +79,8 @@ class VideoFrameViewSet(viewsets.ModelViewSet):
             )
             data = {
                 "pathIn": basepath + "/media/frames/",
-                "pathOut": basepath + "/media/video/{}.avi".format("audio_name"),
-                "video_output": "/media/video/{}.avi".format("audio_name"),
+                "pathOut": basepath + "/media/video/{}.mp4".format("audio_name"),
+                "video_output": "/media/video/{}.mp4".format("audio_name"),
                 "fps": 24.0,
                 "frame_data": video_frame_keys,
                 "baseUrl": f"{request.scheme}://{request.META['HTTP_HOST']}",

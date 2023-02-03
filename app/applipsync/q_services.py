@@ -24,8 +24,8 @@ def hook_funcs(task):
     )
     data = {
         "pathIn": basepath + "/media/frames/",
-        "pathOut": basepath + "/media/video/{}.avi".format(file.name),
-        "video_output": "/media/video/{}.avi".format(file.name),
+        "pathOut": basepath + "/media/video/{}.mp4".format(file.name),
+        "video_output": "/media/video/{}.mp4".format(file.name),
         "fps": 24.0,
         "frame_data": video_frame_keys,
         "baseUrl": task.result.get("baseUrl"),
