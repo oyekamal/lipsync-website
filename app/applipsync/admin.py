@@ -9,3 +9,10 @@ admin.site.register(VideoFrame)
 admin.site.register(Video)
 admin.site.register(Mouth)
 admin.site.register(Question)
+admin.site.register(Tag)
+admin.site.register(Blog)
+# Register your models here.
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['name', 'slug']
+    prepopulated_fields = {'slug': ('name', )}
