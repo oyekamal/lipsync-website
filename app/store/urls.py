@@ -18,5 +18,6 @@ urlpatterns = [
     path("question/", views.Questionrederer, name="question"),
     path("about/", views.Aboutrederer, name="about"),
     path("blog/", views.Blog_list, name="blog_list"),
+    path("blog_details/<slug:slug>/", views.blog_details, name="blog_details"),
 ]
 

@@ -222,6 +222,6 @@ def mouth_details(request, slug):
     
     
 def blog_details(request, slug):
-    print("Mouth Details")
-
-    return render(request, "store/blog-details.html")
+    print("blog Details")
+    blog = get_object_or_404(Blog, slug=slug)
+    return render(request, "store/blog-details.html", context={"blog": blog})
