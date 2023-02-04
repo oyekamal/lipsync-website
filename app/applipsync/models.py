@@ -72,6 +72,9 @@ class Mouth(models.Model):
         validators=[FileExtensionValidator(["png"])],
     )
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
+    class Meta:
+        ordering = ('-created_at',)
 
     def __str__(self):
         return self.title
@@ -98,6 +101,9 @@ class File(models.Model):
     mouth = models.ForeignKey(Mouth, on_delete=models.CASCADE, null=True)
     slug = models.SlugField(max_length=255)
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    
+    class Meta:
+        ordering = ('-created_at',)
 
     def __str__(self):
         return self.name + " : " + self.mouth.title
@@ -130,6 +136,9 @@ class Video(models.Model):
     video_frame = models.ForeignKey(VideoFrame, on_delete=models.CASCADE)
     video = models.FileField(blank=False, null=False, upload_to="video/")
     created_at = models.DateTimeField(auto_now_add=True)
+    
+    class Meta:
+        ordering = ('-created_at',)
 
     def __str__(self):
         return self.video_frame.gentle_josn.file.name
@@ -140,7 +149,9 @@ class Question(models.Model):
     email = models.EmailField(max_length=255)
     description = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
-
+    class Meta:
+        ordering = ('-created_at',)
+    
     def __str__(self):
         return self.name
 
@@ -171,6 +182,9 @@ class Blog(models.Model):
     image = models.ImageField(upload_to="images/blog_images/")
     categories = models.ManyToManyField(Category)
     tags = models.ManyToManyField(Tag)
+    
+    class Meta:
+        ordering = ('-pub_date',)
 
     def __str__(self):
         return self.title

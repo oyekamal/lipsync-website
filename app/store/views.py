@@ -224,4 +224,15 @@ def mouth_details(request, slug):
 def blog_details(request, slug):
     print("blog Details")
     blog = get_object_or_404(Blog, slug=slug)
-    return render(request, "store/blog-details.html", context={"blog": blog})
+    categories= blog.categories.all()
+    categories_name = " "
+    if categories:
+        for cat in categories:
+            categories_name = categories_name + cat.name + ", "
+            
+    tags = blog.tags.all()
+    tags_name = " "
+    if tags:
+        for tag in tags:
+            tags_name = tags_name + tag.name + ", "
+    return render(request, "store/blog-details.html", context={"blog": blog, "categories":categories_name, "tags":tags_name})
