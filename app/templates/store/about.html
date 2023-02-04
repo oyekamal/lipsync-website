@@ -1,7 +1,47 @@
 
 {% extends "base.html" %}
 
-{% block title %} About {% endblock %}
+{% block head %} 
+
+<meta name="title" content="free 2d Mouth lipsync software">
+<meta name="description" content="Discover everything about Auto Mouth Lipsync - a technique for automating lip movements in animation and film. Learn about its history, applications, and how it works with our comprehensive about page. ">
+<meta name="keywords" content="lip, video, mouth sync, mouth, live, animation, save, lip-sync, syncing, sync, performance, cartoon, software, character, edit, english, add, effects, voice, tools, show, face, lipsync, auto, film, sound, animated, original, lips, text, make, movements, audio, synced, word, synchronization, free, videos, words, lipsynch, expression, emotions, design, color, animate, youtube">
+<meta name="robots" content="index,follow">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="language" content="English">
+<meta name="revisit-after" content="1 day">
+<meta name="author" content="OyKamal">
+
+
+<!-- mobile responsive meta -->
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<title>{% block title %} About {% endblock %}</title>
+<!-- ** Plugins Needed for the Project ** -->
+<!-- plugins -->
+{% load static %}
+<!-- "{% static '/js/getCall.js' %}" -->
+<link rel="stylesheet" href="{% static 'js/plugins/bootstrap/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'js/plugins/themify-icons/themify-icons.css' %}">
+<!-- Main Stylesheet -->
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="{% static 'images/logo.png' %}">
+<!--Favicon-->
+<!-- <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+<link rel="icon" href="images/favicon.ico" type="image/x-icon"> -->
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EE11F9JK2P"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-EE11F9JK2P');
+</script>
+
+
+{% endblock %}
+{% comment %} {% block title %} Question {% endblock %} {% endcomment %}
 
 {% block content %}
 {% load static %}
