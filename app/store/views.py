@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 
-from applipsync.models import File, GentleJson, Question, Video, VideoFrame, Mouth
+from applipsync.models import File, GentleJson, Question, Video, VideoFrame, Mouth, Blog, Category
 from django.db.models import Q
 
 
@@ -85,6 +85,11 @@ def use(request):
 
 def Aboutrederer(request):
     return render(request, "store/about.html")
+
+def Blog_list(request):
+    blogs = Blog.objects.all()
+    Categories = Category.objects.all()
+    return render(request, "store/blog.html", context={"blogs": blogs, "Categories": Categories})
 
 def error_404_view(request, exception=None):
     return render(request, "store/404.html")
@@ -214,3 +219,9 @@ def mouth_details(request, slug):
         }
 
         return render(request, "store/mouth-details.html", context=data)
+    
+    
+def blog_details(request, slug):
+    print("Mouth Details")
+
+    return render(request, "store/blog-details.html")

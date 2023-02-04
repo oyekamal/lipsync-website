@@ -17,4 +17,6 @@ urlpatterns = [
     path("mouth_details/<slug:slug>/", views.mouth_details, name="mouth_details"),
     path("question/", views.Questionrederer, name="question"),
     path("about/", views.Aboutrederer, name="about"),
+    path("blog/", views.Blog_list, name="blog_list"),
 ]
+

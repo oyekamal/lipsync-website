@@ -1,0 +1,47 @@
+
+{% extends "base.html" %}
+
+{% block title %} Blog {% endblock %}
+
+{% block content %}
+{% load static %}
+
+<div class="container my-5">
+    <h1 class="text-center">Blog</h1>
+    <hr>
+    <div class="row">
+        <div class="col-md-8">
+            {% for blog in blogs %}
+            <div class="card mb-4 h-100">
+                <img class="img-responsive" class="card-img-top smallimg" src="{{ blog.image.url }}" alt="Blog post image">
+                <div class="card-body">
+                    <h2 class="card-title">{{blog.title}}</h2>
+                    <p class="card-text">{{ blog.body|slice:":200" }}...</p>
+                    <a href="#" class="btn btn-primary">Read More</a>
+                    {% comment %} <div class="d-flex justify-content-between align-items-center mt-3">
+                        <div class="badge badge-info">Category: {{blog.categories.name}}</div>
+                        <div class="badge badge-secondary">Tags: AI, ML, NLP</div>
+                    </div> {% endcomment %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-md-4">
+            <h3>Categories</h3>
+            <ul class="list-group">
+                {% for category in Categories %}
+                <li class="list-group-item">{{ category.name }}</li>
+                {% endfor %}
+            </ul>
+            {% comment %} <h3 class="mt-5">Tags</h3>
+            <ul class="list-group">
+                <li class="list-group-item">AI</li>
+                <li class="list-group-item">ML</li>
+                <li class="list-group-item">NLP</li>
+            </ul> {% endcomment %}
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

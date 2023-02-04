@@ -176,4 +176,4 @@ class Blog(models.Model):
         return self.title
     
     def get_absolute_url(self):
-        return reverse("store:blog_list", args=[self.slug])
+        return reverse("store:mouth_details", args=[self.slug])
